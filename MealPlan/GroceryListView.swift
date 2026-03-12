@@ -29,7 +29,17 @@ struct GroceryListView: View {
                     }
                 }
             } else {
-                ContentUnavailableView("No plan yet", systemImage: "cart", description: Text("Generate a plan to see grocery lists."))
+                VStack(spacing: 8) {
+                    Image(systemName: "cart")
+                        .font(.system(size: 36))
+                        .foregroundColor(.secondary)
+                    Text("No plan yet")
+                        .font(.headline)
+                    Text("Generate a plan to see grocery lists.")
+                        .font(.subheadline)
+                        .foregroundColor(.secondary)
+                }
+                .padding(.top, 24)
             }
             .navigationTitle("Groceries")
         }

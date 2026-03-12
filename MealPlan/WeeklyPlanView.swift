@@ -37,7 +37,17 @@ struct WeeklyPlanView: View {
                         }
                     }
                 } else {
-                    ContentUnavailableView("No plan yet", systemImage: "calendar", description: Text("Generate a weekly plan to get started."))
+                    VStack(spacing: 8) {
+                        Image(systemName: "calendar")
+                            .font(.system(size: 36))
+                            .foregroundColor(.secondary)
+                        Text("No plan yet")
+                            .font(.headline)
+                        Text("Generate a weekly plan to get started.")
+                            .font(.subheadline)
+                            .foregroundColor(.secondary)
+                    }
+                    .padding(.top, 24)
                 }
             }
             .padding(.horizontal)
