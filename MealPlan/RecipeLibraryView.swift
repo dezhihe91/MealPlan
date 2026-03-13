@@ -3,12 +3,58 @@ import Speech
 import AVFoundation
 
 struct RecipeLibraryView: View {
+    private var cuisineOptions: [String] {
+        let cuisines = store.allRecipes.compactMap { $0.cuisine }.filter { !$0.isEmpty }
+        return Array(Set(cuisines)).sorted()
+    }
+
+    private var filteredRecipes: [Recipe] {
+        var list = store.allRecipes
+        if filterCandidatesOnly {
+            list = list.filter { store.candidateIds.contains($0.id) }
+        }
+        if let meal = filterMeal {
+            list = list.filter { $0.mealType == meal }
+        }
+        if !filterCuisine.isEmpty {
+            list = list.filter { $0.cuisine == filterCuisine }
+        }
+        if filterSoupOnly {
+            list = list.filter { $0.isSoup }
+        }
+        if !searchText.isEmpty {
+            list = list.filter { $0.displayName(for: store.language).localizedCaseInsensitiveContains(searchText) }
+        }
+        return list
+    }
     @EnvironmentObject var store: MealPlanStore
     @State private var showingAdd = false
+    @State private var searchText: String = ""
+    @State private var filterMeal: MealType? = nil
+    @State private var filterCuisine: String = ""
+    @State private var filterSoupOnly: Bool = false
+    @State private var filterCandidatesOnly: Bool = false
 
     var body: some View {
         NavigationStack {
             List {
+                Section(header: Text(store.language == .chinese ? "筛选" : "Filters")) {
+                    Picker(store.language == .chinese ? "餐别" : "Meal", selection: $filterMeal) {
+                        Text(store.language == .chinese ? "全部" : "All").tag(MealType?.none)
+                        ForEach(MealType.allCases) { type in
+                            Text(type.title(for: store.language)).tag(Optional(type))
+                        }
+                    }
+                    Picker(store.language == .chinese ? "菜系" : "Cuisine", selection: $filterCuisine) {
+                        Text(store.language == .chinese ? "全部" : "All").tag("")
+                        ForEach(cuisineOptions, id: \.self) { cuisine in
+                            Text(cuisine).tag(cuisine)
+                        }
+                    }
+                    Toggle(store.language == .chinese ? "只看汤品" : "Soup only", isOn: $filterSoupOnly)
+                    Toggle(store.language == .chinese ? "只看候选" : "Candidates only", isOn: $filterCandidatesOnly)
+                }
+
                 Section(header: Text(store.language == .chinese ? "候选菜谱" : "Candidate Pool")) {
                     if store.candidateIds.isEmpty {
                         Text(store.language == .chinese ? "未选择候选菜谱" : "No candidates selected")
@@ -23,7 +69,7 @@ struct RecipeLibraryView: View {
                 }
 
                 Section(header: Text(store.language == .chinese ? "全部菜谱" : "All Recipes")) {
-                    ForEach(store.allRecipes) { recipe in
+                    ForEach(filteredRecipes) { recipe in
                         HStack {
                             NavigationLink(destination: RecipeDetailView(recipe: recipe)) {
                                 Text(recipe.displayName(for: store.language))
@@ -45,6 +91,7 @@ struct RecipeLibraryView: View {
                 }
             }
             .navigationTitle(store.language == .chinese ? "菜谱库" : "Recipe Library")
+            .searchable(text: $searchText, prompt: store.language == .chinese ? "搜索菜谱" : "Search recipes")
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: { showingAdd = true }) {
