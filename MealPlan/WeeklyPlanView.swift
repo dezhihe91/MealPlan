@@ -79,6 +79,17 @@ struct WeeklyPlanView: View {
         }
     }
 
+    private func mealSummaryLabel(for recipes: [Recipe]) -> String {
+        let calories = recipes.compactMap { $0.calories }.reduce(0, +)
+        let protein = recipes.compactMap { $0.protein }.reduce(0, +)
+        let carbs = recipes.compactMap { $0.carbs }.reduce(0, +)
+        let fat = recipes.compactMap { $0.fat }.reduce(0, +)
+        if store.language == .chinese {
+            return "约 \(calories) 千卡 · 蛋白 \(protein)g · 碳水 \(carbs)g · 脂肪 \(fat)g"
+        }
+        return "~\(calories) kcal · P \(protein)g · C \(carbs)g · F \(fat)g"
+    }
+
     private func toggleLanguage() {
         store.language = store.language == .chinese ? .english : .chinese
     }
