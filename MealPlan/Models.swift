@@ -49,6 +49,24 @@ struct Recipe: Identifiable {
     let nutrition: String?
     let prepMinutes: Int?
     let cookMinutes: Int?
+
+    init(
+        name: String,
+        mealType: MealType,
+        ingredients: [Ingredient],
+        instructions: String,
+        nutrition: String? = nil,
+        prepMinutes: Int? = nil,
+        cookMinutes: Int? = nil
+    ) {
+        self.name = name
+        self.mealType = mealType
+        self.ingredients = ingredients
+        self.instructions = instructions
+        self.nutrition = nutrition
+        self.prepMinutes = prepMinutes
+        self.cookMinutes = cookMinutes
+    }
 }
 
 enum MealTemplate: String, CaseIterable, Identifiable {
