@@ -18,12 +18,11 @@ final class MealPlanStore: ObservableObject {
         let recipes = SampleRecipes.recipes(for: selectedTemplate)
         let dayPlans = (0..<7).compactMap { offset -> DayPlan? in
             guard let date = Calendar.current.date(byAdding: .day, value: offset, to: start) else { return nil }
-            var meals: [MealType: Recipe] = [:]
+            var meals: [MealType: [Recipe]] = [:]
             for mealType in MealType.allCases {
                 let candidates = recipes.filter { $0.mealType == mealType }
-                if let recipe = candidates[safe: offset % max(candidates.count, 1)] ?? candidates.first {
-                    meals[mealType] = recipe
-                }
+                let mealRecipes = pickRecipes(from: candidates, seed: offset)
+                meals[mealType] = mealRecipes
             }
             return DayPlan(date: date, meals: meals)
         }
@@ -45,7 +44,7 @@ final class MealPlanStore: ObservableObject {
         for dayPlan in plan.days {
             let weekday = Weekday(rawValue: Calendar.current.component(.weekday, from: dayPlan.date)) ?? .sunday
             let targetDay = nearestGroceryDay(from: weekday, available: sortedDays)
-            let ingredients = dayPlan.meals.values.flatMap { $0.ingredients }
+            let ingredients = dayPlan.meals.values.flatMap { $0.flatMap { $0.ingredients } }
             grouped[targetDay, default: []].append(contentsOf: ingredients)
         }
 
@@ -60,6 +59,15 @@ final class MealPlanStore: ObservableObject {
             return next
         }
         return available.first ?? .sunday
+    }
+
+    private func pickRecipes(from recipes: [Recipe], seed: Int) -> [Recipe] {
+        guard !recipes.isEmpty else { return [] }
+        if recipes.count == 1 { return recipes }
+        let first = recipes[seed % recipes.count]
+        let second = recipes[(seed + 1) % recipes.count]
+        if first.id == second.id { return [first] }
+        return [first, second]
     }
 
     private func aggregate(ingredients: [Ingredient]) -> [Ingredient] {

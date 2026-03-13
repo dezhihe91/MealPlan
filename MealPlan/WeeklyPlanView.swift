@@ -23,13 +23,20 @@ struct WeeklyPlanView: View {
                         ForEach(plan.days) { day in
                             Section(header: Text(day.date.formatted(date: .abbreviated, time: .omitted))) {
                                 ForEach(MealType.allCases) { mealType in
-                                    if let recipe = day.meals[mealType] {
-                                        VStack(alignment: .leading, spacing: 6) {
+                                    if let recipes = day.meals[mealType] {
+                                        VStack(alignment: .leading, spacing: 8) {
                                             Text(mealType.title)
                                                 .font(.headline)
-                                            Text(recipe.name)
-                                                .font(.subheadline)
-                                                .foregroundColor(.secondary)
+                                            ForEach(recipes) { recipe in
+                                                VStack(alignment: .leading, spacing: 4) {
+                                                    Text(recipe.name)
+                                                        .font(.subheadline)
+                                                        .foregroundColor(.secondary)
+                                                    Text(recipe.instructions)
+                                                        .font(.footnote)
+                                                        .foregroundColor(.secondary)
+                                                }
+                                            }
                                         }
                                     }
                                 }
