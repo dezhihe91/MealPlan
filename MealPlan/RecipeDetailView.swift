@@ -48,8 +48,14 @@ struct RecipeDetailView: View {
                         .font(.headline)
                     let steps = stepsFromInstructions(recipe.displayInstructions(for: store.language))
                     ForEach(Array(steps.enumerated()), id: \.offset) { index, step in
-                        Text("\(index + 1). \(step)")
-                            .font(.body)
+                        let line = "\(index + 1). \(step)"
+                        if let attributed = try? AttributedString(markdown: line, options: .init(interpretedSyntax: .inlineOnlyPreservingWhitespace)) {
+                            Text(attributed)
+                                .font(.body)
+                        } else {
+                            Text(line)
+                                .font(.body)
+                        }
                     }
                 }
             }
@@ -57,6 +63,20 @@ struct RecipeDetailView: View {
         }
         .navigationTitle(store.language == .chinese ? "菜谱" : "Recipe")
         .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button(action: {
+                    if store.likedIds.contains(recipe.id) {
+                        store.likedIds.remove(recipe.id)
+                    } else {
+                        store.likedIds.insert(recipe.id)
+                    }
+                }) {
+                    Image(systemName: store.likedIds.contains(recipe.id) ? "heart.fill" : "heart")
+                        .foregroundColor(store.likedIds.contains(recipe.id) ? .red : .primary)
+                }
+            }
+        }
     }
 
     private func stepsFromInstructions(_ instructions: String) -> [String] {
