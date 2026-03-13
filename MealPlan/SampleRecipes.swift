@@ -323,17 +323,17 @@ struct SampleRecipes {
         Recipe(name: "豆浆油条", nameEn: "Soy Milk & Youtiao", mealType: .breakfast, ingredients: [
             Ingredient(name: "豆浆", quantity: 300, unit: "ml", category: .dairy),
             Ingredient(name: "油条", quantity: 1, unit: "根", category: .grains)
-        ], instructions: "豆浆加热；油条回烤1–2分钟更酥。", instructionsEn: "Heat soy milk and warm youtiao.", nutrition: "中式早餐", nutritionEn: "Chinese breakfast", prepMinutes: 5, cookMinutes: 3, cuisine: "家常", isSoup: false),
+        ], instructions: "豆浆加热；油条回烤1–2分钟更酥。", instructionsEn: "Heat soy milk and warm youtiao.", nutrition: "中式早餐", nutritionEn: "Chinese breakfast", prepMinutes: 5, cookMinutes: 3, isSoup: false, cuisine: "家常"),
         Recipe(name: "皮蛋瘦肉粥", nameEn: "Century Egg Pork Congee", mealType: .breakfast, ingredients: [
             Ingredient(name: "大米", quantity: 80, unit: "g", category: .grains),
             Ingredient(name: "皮蛋", quantity: 1, unit: "个", category: .protein),
             Ingredient(name: "瘦肉", quantity: 80, unit: "g", category: .protein)
-        ], instructions: "大米加水煮粥30分钟；瘦肉切丝腌制后下锅煮熟，加入皮蛋块再煮5分钟。", instructionsEn: "Simmer rice into congee, add pork and century egg.", nutrition: "暖胃", nutritionEn: "Comforting", prepMinutes: 10, cookMinutes: 35, cuisine: "家常", isSoup: true),
+        ], instructions: "大米加水煮粥30分钟；瘦肉切丝腌制后下锅煮熟，加入皮蛋块再煮5分钟。", instructionsEn: "Simmer rice into congee, add pork and century egg.", nutrition: "暖胃", nutritionEn: "Comforting", prepMinutes: 10, cookMinutes: 35, isSoup: true, cuisine: "家常"),
         Recipe(name: "葱油拌面", nameEn: "Scallion Oil Noodles", mealType: .breakfast, ingredients: [
             Ingredient(name: "面条", quantity: 120, unit: "g", category: .grains),
             Ingredient(name: "葱", quantity: 10, unit: "g", category: .spices),
             Ingredient(name: "酱油", quantity: 10, unit: "ml", category: .spices)
-        ], instructions: "葱段小火熬香葱油；面条煮熟拌入葱油和酱油。", instructionsEn: "Cook noodles and toss with scallion oil.", nutrition: "家常", nutritionEn: "Home-style", prepMinutes: 8, cookMinutes: 8, cuisine: "家常", isSoup: false),
+        ], instructions: "葱段小火熬香葱油；面条煮熟拌入葱油和酱油。", instructionsEn: "Cook noodles and toss with scallion oil.", nutrition: "家常", nutritionEn: "Home-style", prepMinutes: 8, cookMinutes: 8, isSoup: false, cuisine: "家常"),
         Recipe(name: "麻婆豆腐", nameEn: "Mapo Tofu", mealType: .lunch, ingredients: [
             Ingredient(name: "豆腐", quantity: 200, unit: "g", category: .protein),
             Ingredient(name: "肉末", quantity: 80, unit: "g", category: .protein),
