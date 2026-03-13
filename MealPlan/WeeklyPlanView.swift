@@ -6,6 +6,12 @@ struct WeeklyPlanView: View {
     var body: some View {
         NavigationStack {
             VStack(spacing: 16) {
+                Picker("Template", selection: $store.selectedTemplate) {
+                    ForEach(MealTemplate.allCases) { template in
+                        Text(template.title).tag(template)
+                    }
+                }
+                .pickerStyle(.segmented)
                 HStack(spacing: 12) {
                     Button("Generate Plan") {
                         store.generatePlan()
@@ -28,13 +34,15 @@ struct WeeklyPlanView: View {
                                             Text(mealType.title)
                                                 .font(.headline)
                                             ForEach(recipes) { recipe in
-                                                VStack(alignment: .leading, spacing: 4) {
-                                                    Text(recipe.name)
-                                                        .font(.subheadline)
-                                                        .foregroundColor(.secondary)
-                                                    Text(recipe.instructions)
-                                                        .font(.footnote)
-                                                        .foregroundColor(.secondary)
+                                                NavigationLink(destination: RecipeDetailView(recipe: recipe)) {
+                                                    VStack(alignment: .leading, spacing: 4) {
+                                                        Text(recipe.name)
+                                                            .font(.subheadline)
+                                                        Text(recipe.instructions)
+                                                            .font(.footnote)
+                                                            .foregroundColor(.secondary)
+                                                            .lineLimit(2)
+                                                    }
                                                 }
                                             }
                                         }

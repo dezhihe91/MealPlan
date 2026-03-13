@@ -21,22 +21,22 @@ struct SampleRecipes {
             Ingredient(name: "Oats", quantity: 60, unit: "g", category: .grains),
             Ingredient(name: "Milk", quantity: 200, unit: "ml", category: .dairy),
             Ingredient(name: "Blueberries", quantity: 80, unit: "g", category: .produce)
-        ], instructions: "Cook oats with milk. Top with berries.", nutrition: "Balanced carbs & fiber"),
+        ], instructions: "Simmer oats with milk for 5–7 minutes until creamy, stir, then top with berries.", nutrition: "Balanced carbs & fiber"),
         Recipe(name: "Turkey Sandwich", mealType: .lunch, ingredients: [
             Ingredient(name: "Whole wheat bread", quantity: 2, unit: "slices", category: .grains),
             Ingredient(name: "Turkey", quantity: 100, unit: "g", category: .protein),
             Ingredient(name: "Lettuce", quantity: 40, unit: "g", category: .produce)
-        ], instructions: "Assemble sandwich and serve with greens.", nutrition: "Lean protein"),
+        ], instructions: "Toast bread, add turkey and lettuce, season lightly, and serve with a side of greens.", nutrition: "Lean protein"),
         Recipe(name: "Salmon + Rice", mealType: .dinner, ingredients: [
             Ingredient(name: "Salmon", quantity: 150, unit: "g", category: .protein),
             Ingredient(name: "Brown rice", quantity: 80, unit: "g", category: .grains),
             Ingredient(name: "Broccoli", quantity: 120, unit: "g", category: .produce)
-        ], instructions: "Bake salmon, steam broccoli, serve with rice.", nutrition: "Omega-3 + fiber"),
+        ], instructions: "Season salmon and bake 12–15 min at 200°C; steam broccoli 3–4 min; serve with warm rice.", nutrition: "Omega-3 + fiber"),
         Recipe(name: "Greek Yogurt Bowl", mealType: .breakfast, ingredients: [
             Ingredient(name: "Greek yogurt", quantity: 200, unit: "g", category: .dairy),
             Ingredient(name: "Banana", quantity: 1, unit: "piece", category: .produce),
             Ingredient(name: "Granola", quantity: 40, unit: "g", category: .grains)
-        ], instructions: "Mix yogurt with fruit and granola.", nutrition: "Protein + carbs"),
+        ], instructions: "Spoon yogurt into a bowl, add sliced fruit, then sprinkle granola on top.", nutrition: "Protein + carbs"),
         Recipe(name: "Chicken Salad", mealType: .lunch, ingredients: [
             Ingredient(name: "Chicken breast", quantity: 120, unit: "g", category: .protein),
             Ingredient(name: "Mixed greens", quantity: 80, unit: "g", category: .produce),
@@ -51,16 +51,16 @@ struct SampleRecipes {
             Ingredient(name: "米饭", quantity: 150, unit: "g", category: .grains),
             Ingredient(name: "鸡蛋", quantity: 2, unit: "pcs", category: .protein),
             Ingredient(name: "番茄", quantity: 120, unit: "g", category: .produce)
-        ], instructions: "鸡蛋炒散盛出；番茄炒出汁，倒入米饭和鸡蛋翻炒，加少许盐。", nutrition: "家常均衡"),
+        ], instructions: "鸡蛋打散炒到凝固盛出；番茄下锅炒出汁，加少许盐；倒入米饭翻炒松散，再回锅鸡蛋拌匀即可。", nutrition: "家常均衡"),
         Recipe(name: "清炒时蔬", mealType: .lunch, ingredients: [
             Ingredient(name: "西兰花", quantity: 120, unit: "g", category: .produce),
             Ingredient(name: "蒜", quantity: 5, unit: "g", category: .spices),
             Ingredient(name: "食用油", quantity: 8, unit: "ml", category: .pantry)
-        ], instructions: "蒜爆香，下西兰花快炒至断生，加少许盐。", nutrition: "高纤维"),
+        ], instructions: "蒜末少油小火爆香，下西兰花大火快炒至断生，撒少许盐出锅。", nutrition: "高纤维"),
         Recipe(name: "小米南瓜粥", mealType: .breakfast, ingredients: [
             Ingredient(name: "小米", quantity: 60, unit: "g", category: .grains),
             Ingredient(name: "南瓜", quantity: 100, unit: "g", category: .produce)
-        ], instructions: "小米加水煮开后小火煮20分钟，加入南瓜再煮10分钟。", nutrition: "暖胃"),
+        ], instructions: "小米洗净加水煮开，转小火煮20分钟；加入南瓜块再煮10分钟至软糯。", nutrition: "暖胃"),
 ]
 
     private static let pregnancy: [Recipe] = [
@@ -98,12 +98,12 @@ struct SampleRecipes {
             Ingredient(name: "猪肝", quantity: 120, unit: "g", category: .protein),
             Ingredient(name: "菠菜", quantity: 80, unit: "g", category: .produce),
             Ingredient(name: "姜", quantity: 5, unit: "g", category: .spices)
-        ], instructions: "猪肝切片焯水，另起水加姜片煮开后放猪肝与菠菜，调味即可。", nutrition: "补铁"),
+        ], instructions: "猪肝切片加料酒抓匀，沸水焯10秒捞出；另起水加姜片煮开，下猪肝和菠菜，沸后调盐即可。", nutrition: "补铁"),
         Recipe(name: "红枣枸杞燕麦粥", mealType: .breakfast, ingredients: [
             Ingredient(name: "燕麦", quantity: 60, unit: "g", category: .grains),
             Ingredient(name: "红枣", quantity: 6, unit: "pcs", category: .produce),
             Ingredient(name: "枸杞", quantity: 10, unit: "g", category: .produce)
-        ], instructions: "燕麦加水煮10分钟，加入红枣枸杞再煮5分钟。", nutrition: "补气"),
+        ], instructions: "燕麦加水煮10分钟，加入去核红枣与枸杞再煮5分钟，微甜即可。", nutrition: "补气"),
 ]
 
     private static let muscleGain: [Recipe] = [
@@ -141,12 +141,12 @@ struct SampleRecipes {
             Ingredient(name: "鸡胸肉", quantity: 180, unit: "g", category: .protein),
             Ingredient(name: "西兰花", quantity: 150, unit: "g", category: .produce),
             Ingredient(name: "黑胡椒", quantity: 2, unit: "g", category: .spices)
-        ], instructions: "鸡胸肉煎熟撒黑胡椒，西兰花焯水后快炒。", nutrition: "高蛋白"),
+        ], instructions: "鸡胸肉切厚片少油煎熟撒黑胡椒；西兰花焯水30秒后快炒出锅。", nutrition: "高蛋白"),
         Recipe(name: "牛肉面（清汤）", mealType: .lunch, ingredients: [
             Ingredient(name: "牛肉", quantity: 150, unit: "g", category: .protein),
             Ingredient(name: "面条", quantity: 120, unit: "g", category: .grains),
             Ingredient(name: "青菜", quantity: 80, unit: "g", category: .produce)
-        ], instructions: "牛肉煮熟切片；面条煮熟，放青菜，浇上清汤。", nutrition: "蛋白+碳水"),
+        ], instructions: "牛肉加姜片煮熟切片；面条煮至弹牙，加入青菜焯熟，浇牛肉清汤即可。", nutrition: "蛋白+碳水"),
 ]
 
     private static let fatLoss: [Recipe] = [
@@ -184,12 +184,12 @@ struct SampleRecipes {
             Ingredient(name: "冬瓜", quantity: 200, unit: "g", category: .produce),
             Ingredient(name: "虾仁", quantity: 150, unit: "g", category: .protein),
             Ingredient(name: "姜", quantity: 5, unit: "g", category: .spices)
-        ], instructions: "姜片爆香下虾仁炒至变色，加入冬瓜片翻炒加少量水焖5分钟。", nutrition: "低脂"),
+        ], instructions: "姜片少油爆香，下虾仁炒至变色；加入冬瓜片翻炒，加少量水焖5分钟至透明。", nutrition: "低脂"),
         Recipe(name: "凉拌鸡丝", mealType: .lunch, ingredients: [
             Ingredient(name: "鸡胸肉", quantity: 140, unit: "g", category: .protein),
             Ingredient(name: "黄瓜", quantity: 120, unit: "g", category: .produce),
             Ingredient(name: "酱油", quantity: 5, unit: "ml", category: .pantry)
-        ], instructions: "鸡胸肉煮熟撕丝，黄瓜切丝，拌入少许酱油。", nutrition: "低碳"),
+        ], instructions: "鸡胸肉冷水下锅煮熟撕丝，黄瓜切丝；加少许酱油和香油拌匀。", nutrition: "低碳"),
 ]
 
     private static let mediterranean: [Recipe] = [
@@ -227,11 +227,11 @@ struct SampleRecipes {
             Ingredient(name: "虾仁", quantity: 160, unit: "g", category: .protein),
             Ingredient(name: "橄榄油", quantity: 10, unit: "ml", category: .pantry),
             Ingredient(name: "蒜", quantity: 6, unit: "g", category: .spices)
-        ], instructions: "蒜蓉用橄榄油炒香，放虾仁翻炒至变色。", nutrition: "地中海风味"),
+        ], instructions: "蒜蓉用橄榄油小火炒香，放虾仁快速翻炒至变色，加少许盐胡椒。", nutrition: "地中海风味"),
         Recipe(name: "番茄鹰嘴豆炖菜", mealType: .lunch, ingredients: [
             Ingredient(name: "鹰嘴豆", quantity: 120, unit: "g", category: .pantry),
             Ingredient(name: "番茄", quantity: 150, unit: "g", category: .produce),
             Ingredient(name: "洋葱", quantity: 50, unit: "g", category: .produce)
-        ], instructions: "洋葱炒香，加入番茄与鹰嘴豆小火炖10分钟。", nutrition: "高纤维"),
+        ], instructions: "洋葱炒软出香，加入番茄炒出汁，倒入鹰嘴豆小火炖10分钟，调盐。", nutrition: "高纤维"),
 ]
 }
