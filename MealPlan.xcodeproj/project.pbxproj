@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		15E1CFE6130B8E3FCB1D73DB /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E2D8A47C7E65E21393E7F9 /* SplashView.swift */; };
 		35C50C030DD1A340DB46CE08 /* MealPlanStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA541B90DAFB799EDA0E1EB9 /* MealPlanStore.swift */; };
 		47D5612113397857BDFF89BC /* GroceryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E065F641DF52D187FBC1AA2 /* GroceryListView.swift */; };
 		5ED3A5AC75386740AE4C4600 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB8C5D1925BDE61FB8FA764 /* SettingsView.swift */; };
@@ -35,6 +36,7 @@
 		96C3B4B7BD01DD4A251F237B /* RecipeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailView.swift; sourceTree = "<group>"; };
 		A6FF5691D22A7117B434FF63 /* RecipeLibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeLibraryView.swift; sourceTree = "<group>"; };
 		BA541B90DAFB799EDA0E1EB9 /* MealPlanStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealPlanStore.swift; sourceTree = "<group>"; };
+		C4E2D8A47C7E65E21393E7F9 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		CFB8C5D1925BDE61FB8FA764 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		F2C18FDACED8EC7DE1B965D6 /* MealPlanApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealPlanApp.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -62,6 +64,7 @@
 				63EFC9ABD1EB5EFD09AA6F89 /* ReminderManager.swift */,
 				8E38DBC1371F46CC9C2714B3 /* SampleRecipes.swift */,
 				CFB8C5D1925BDE61FB8FA764 /* SettingsView.swift */,
+				C4E2D8A47C7E65E21393E7F9 /* SplashView.swift */,
 				5EEC740D5F9AD70E62C84A9E /* WeeklyPlanView.swift */,
 				30FC0A9E3BA43BE811F00729 /* Resources */,
 			);
@@ -166,6 +169,7 @@
 				B2727497836AC2EF3BD81542 /* ReminderManager.swift in Sources */,
 				E75DDC31849A32BB9D13458B /* SampleRecipes.swift in Sources */,
 				5ED3A5AC75386740AE4C4600 /* SettingsView.swift in Sources */,
+				15E1CFE6130B8E3FCB1D73DB /* SplashView.swift in Sources */,
 				78C21773EBB77BDBFC6B0040 /* WeeklyPlanView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
