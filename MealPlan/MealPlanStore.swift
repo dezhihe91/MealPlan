@@ -42,22 +42,40 @@ final class MealPlanStore: ObservableObject {
         let sortedDays = groceryDays.sorted { $0.rawValue < $1.rawValue }
         guard !sortedDays.isEmpty else { return [] }
 
-        var grouped: [Weekday: [Ingredient]] = [:]
-        for day in sortedDays {
-            grouped[day] = []
-        }
+        let calendar = Calendar.current
+        let weekDates = plan.days.map { $0.date }
 
-        for dayPlan in plan.days {
-            let weekday = Weekday(rawValue: Calendar.current.component(.weekday, from: dayPlan.date)) ?? .sunday
-            let targetDay = nearestGroceryDay(from: weekday, available: sortedDays)
-            let ingredients = dayPlan.meals.values.flatMap { $0.flatMap { $0.ingredients } }
-            grouped[targetDay, default: []].append(contentsOf: ingredients)
+        var tripItems: [Weekday: [Ingredient]] = [:]
+        for day in sortedDays { tripItems[day] = [] }
+
+        for (index, tripDay) in sortedDays.enumerated() {
+            let startDay = tripDay
+            let endDay = index + 1 < sortedDays.count ? sortedDays[index + 1] : nil
+
+            for dayPlan in plan.days {
+                let weekday = Weekday(rawValue: calendar.component(.weekday, from: dayPlan.date)) ?? .sunday
+                if isInRange(weekday: weekday, start: startDay, end: endDay) {
+                    let ingredients = dayPlan.meals.values.flatMap { $0.flatMap { $0.ingredients } }
+                    tripItems[tripDay, default: []].append(contentsOf: ingredients)
+                }
+            }
         }
 
         return sortedDays.map { day in
-            let items = aggregate(ingredients: grouped[day, default: []])
+            let items = aggregate(ingredients: tripItems[day, default: []])
             return GroceryTrip(weekday: day, items: items)
         }
+    }
+
+    private func isInRange(weekday: Weekday, start: Weekday, end: Weekday?) -> Bool {
+        if let end {
+            if start.rawValue <= end.rawValue {
+                return weekday.rawValue >= start.rawValue && weekday.rawValue < end.rawValue
+            } else {
+                return weekday.rawValue >= start.rawValue || weekday.rawValue < end.rawValue
+            }
+        }
+        return weekday.rawValue >= start.rawValue
     }
 
     private func nearestGroceryDay(from weekday: Weekday, available: [Weekday]) -> Weekday {
@@ -70,6 +88,15 @@ final class MealPlanStore: ObservableObject {
     private func pickRecipes(from recipes: [Recipe], seed: Int) -> [Recipe] {
         guard !recipes.isEmpty else { return [] }
         if recipes.count == 1 { return recipes }
+
+        let soups = recipes.filter { $0.isSoup }
+        let mains = recipes.filter { !$0.isSoup }
+        if !soups.isEmpty && !mains.isEmpty {
+            let main = mains[seed % mains.count]
+            let soup = soups[seed % soups.count]
+            return [main, soup]
+        }
+
         let first = recipes[seed % recipes.count]
         let second = recipes[(seed + 1) % recipes.count]
         if first.id == second.id { return [first] }

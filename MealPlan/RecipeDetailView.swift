@@ -36,7 +36,7 @@ struct RecipeDetailView: View {
                                 .font(.subheadline)
                                 .foregroundColor(.secondary)
                             ForEach(items) { item in
-                                Text("• \(item.name) — \(item.quantity, specifier: "%.1f") \(item.unit)")
+                                Text(store.language == .chinese ? "• \(item.name) — \(item.quantity, specifier: \"%.1f\") \(item.unit)" : "• \(item.name) — \(item.quantity, specifier: \"%.1f\") \(item.unit)")
                                     .font(.subheadline)
                             }
                         }

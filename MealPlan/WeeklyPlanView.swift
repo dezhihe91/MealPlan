@@ -31,7 +31,18 @@ struct WeeklyPlanView: View {
                             Section(header: Text(day.date.formatted(date: .abbreviated, time: .omitted))) {
                                 ForEach(MealType.allCases) { mealType in
                                     if let recipes = day.meals[mealType] {
-                                        MealSectionView(mealType: mealType, recipes: recipes, language: store.language)
+                                        ForEach(recipes) { recipe in
+                                            NavigationLink(destination: RecipeDetailView(recipe: recipe)) {
+                                                HStack(spacing: 8) {
+                                                    Text(mealType.title(for: store.language))
+                                                        .font(.subheadline)
+                                                        .foregroundColor(.secondary)
+                                                        .frame(width: 44, alignment: .leading)
+                                                    Text(recipe.displayName(for: store.language))
+                                                        .font(.subheadline)
+                                                }
+                                            }
+                                        }
                                     }
                                 }
                             }
@@ -67,24 +78,4 @@ struct WeeklyPlanView: View {
         store.language = store.language == .chinese ? .english : .chinese
     }
 }
-
-private struct MealSectionView: View {
-    let mealType: MealType
-    let recipes: [Recipe]
-    let language: AppLanguage
-
-    var body: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            Text(mealType.title(for: language))
-                .font(.headline)
-            ForEach(recipes) { recipe in
-                NavigationLink(destination: RecipeDetailView(recipe: recipe)) {
-                    VStack(alignment: .leading, spacing: 4) {
-                        Text(recipe.displayName(for: language))
-                            .font(.subheadline)
-                    }
-                }
-            }
-        }
-    }
 }

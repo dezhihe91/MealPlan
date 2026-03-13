@@ -75,6 +75,8 @@ struct Recipe: Identifiable {
     let nutritionEn: String?
     let prepMinutes: Int?
     let cookMinutes: Int?
+    let isSoup: Bool
+    let cuisine: String?
 
     init(
         name: String,
@@ -86,7 +88,9 @@ struct Recipe: Identifiable {
         nutrition: String? = nil,
         nutritionEn: String? = nil,
         prepMinutes: Int? = nil,
-        cookMinutes: Int? = nil
+        cookMinutes: Int? = nil,
+        isSoup: Bool = false,
+        cuisine: String? = nil
     ) {
         self.name = name
         self.nameEn = nameEn
@@ -98,6 +102,8 @@ struct Recipe: Identifiable {
         self.nutritionEn = nutritionEn
         self.prepMinutes = prepMinutes
         self.cookMinutes = cookMinutes
+        self.isSoup = isSoup
+        self.cuisine = cuisine
     }
 
     func displayName(for language: AppLanguage) -> String {
@@ -140,11 +146,13 @@ enum MealTemplate: String, CaseIterable, Identifiable {
         case (.muscleGain, .chinese): return "健身增肌"
         case (.fatLoss, .chinese): return "减脂控卡"
         case (.mediterranean, .chinese): return "地中海"
+        case (.chinese, .chinese): return "中餐经典"
         case (.balanced, .english): return "Balanced"
         case (.pregnancy, .english): return "Pregnancy"
         case (.muscleGain, .english): return "Muscle Gain"
         case (.fatLoss, .english): return "Fat Loss"
         case (.mediterranean, .english): return "Mediterranean"
+        case (.chinese, .english): return "Chinese"
         }
     }
 }
