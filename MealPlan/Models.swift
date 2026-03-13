@@ -53,30 +53,6 @@ enum IngredientCategory: String, CaseIterable, Identifiable {
         case (.other, .english): return "Other"
         }
     }
-
-    func displayName(for language: AppLanguage) -> String {
-        if language == .english {
-            return nameEn ?? name
-        }
-        return name
-    }
-
-    func displayInstructions(for language: AppLanguage) -> String {
-        if language == .english {
-            if let instructionsEn, instructionsEn != "See Chinese steps" {
-                return instructionsEn
-            }
-            return instructions
-        }
-        return instructions
-    }
-
-    func displayNutrition(for language: AppLanguage) -> String? {
-        if language == .english {
-            return nutritionEn ?? nutrition
-        }
-        return nutrition
-    }
 }
 
 struct Ingredient: Hashable, Identifiable {
@@ -171,30 +147,6 @@ enum MealTemplate: String, CaseIterable, Identifiable {
         case (.mediterranean, .english): return "Mediterranean"
         }
     }
-
-    func displayName(for language: AppLanguage) -> String {
-        if language == .english {
-            return nameEn ?? name
-        }
-        return name
-    }
-
-    func displayInstructions(for language: AppLanguage) -> String {
-        if language == .english {
-            if let instructionsEn, instructionsEn != "See Chinese steps" {
-                return instructionsEn
-            }
-            return instructions
-        }
-        return instructions
-    }
-
-    func displayNutrition(for language: AppLanguage) -> String? {
-        if language == .english {
-            return nutritionEn ?? nutrition
-        }
-        return nutrition
-    }
 }
 
 struct DayPlan: Identifiable {
@@ -235,30 +187,6 @@ enum Weekday: Int, CaseIterable, Identifiable {
         case (.friday, .english): return "Fri"
         case (.saturday, .english): return "Sat"
         }
-    }
-
-    func displayName(for language: AppLanguage) -> String {
-        if language == .english {
-            return nameEn ?? name
-        }
-        return name
-    }
-
-    func displayInstructions(for language: AppLanguage) -> String {
-        if language == .english {
-            if let instructionsEn, instructionsEn != "See Chinese steps" {
-                return instructionsEn
-            }
-            return instructions
-        }
-        return instructions
-    }
-
-    func displayNutrition(for language: AppLanguage) -> String? {
-        if language == .english {
-            return nutritionEn ?? nutrition
-        }
-        return nutrition
     }
 }
 
