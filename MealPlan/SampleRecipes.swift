@@ -324,17 +324,17 @@ struct SampleRecipes {
             Ingredient(name: "豆腐", quantity: 200, unit: "g", category: .protein),
             Ingredient(name: "肉末", quantity: 80, unit: "g", category: .protein),
             Ingredient(name: "豆瓣酱", quantity: 15, unit: "g", category: .spices)
-        ], instructions: "豆腐切块焯水；热锅下油炒香豆瓣酱和肉末，加水下豆腐小火煮，淋水淀粉勾芡。", instructionsEn: "See Chinese steps", nutrition: "川菜经典", nutritionEn: "Sichuan style", cuisine: "川菜"),
+        ], instructions: "豆腐切块焯水1分钟沥干；锅中少油下肉末炒散，加入豆瓣酱炒出红油；加少量清水与生抽，放入豆腐小火煮3分钟；淋水淀粉勾芡，撒花椒粉和葱花。", instructionsEn: "See Chinese steps", nutrition: "川菜经典", nutritionEn: "Sichuan style", cuisine: "川菜"),
         Recipe(name: "酸菜鱼", nameEn: "Sour Fish", mealType: .dinner, ingredients: [
             Ingredient(name: "鱼片", quantity: 200, unit: "g", category: .protein),
             Ingredient(name: "酸菜", quantity: 120, unit: "g", category: .produce),
             Ingredient(name: "泡椒", quantity: 10, unit: "g", category: .spices)
-        ], instructions: "酸菜炒香加水煮开，下鱼片煮熟，淋热油增香。", instructionsEn: "See Chinese steps", nutrition: "川味酸辣", nutritionEn: "Sichuan style", cuisine: "川菜"),
+        ], instructions: "酸菜切段炒香，加水煮开并调味；鱼片用盐和淀粉抓匀，下锅滑入至变色；出锅前淋热油和辣椒段增香。", instructionsEn: "See Chinese steps", nutrition: "川味酸辣", nutritionEn: "Sichuan style", cuisine: "川菜"),
         Recipe(name: "剁椒蒸豆腐", nameEn: "Steamed Tofu", mealType: .dinner, ingredients: [
             Ingredient(name: "豆腐", quantity: 200, unit: "g", category: .protein),
             Ingredient(name: "剁椒", quantity: 20, unit: "g", category: .spices),
             Ingredient(name: "葱姜", quantity: 10, unit: "g", category: .spices)
-        ], instructions: "豆腐切块铺盘，放剁椒和葱姜，上锅蒸8分钟，淋热油。", instructionsEn: "See Chinese steps", nutrition: "湘菜风味", nutritionEn: "Hunan style", cuisine: "湘菜"),
+        ], instructions: "豆腐切块铺盘，撒少许盐；铺剁椒和葱姜，上锅蒸8分钟；出锅淋热油与少许生抽。", instructionsEn: "See Chinese steps", nutrition: "湘菜风味", nutritionEn: "Hunan style", cuisine: "湘菜"),
         Recipe(name: "萝卜牛腩汤", nameEn: "Radish Beef Soup", mealType: .dinner, ingredients: [
             Ingredient(name: "牛腩", quantity: 200, unit: "g", category: .protein),
             Ingredient(name: "白萝卜", quantity: 200, unit: "g", category: .produce),
@@ -344,41 +344,41 @@ struct SampleRecipes {
             Ingredient(name: "鸡胸肉", quantity: 180, unit: "g", category: .protein),
             Ingredient(name: "花生", quantity: 20, unit: "g", category: .pantry),
             Ingredient(name: "干辣椒", quantity: 5, unit: "g", category: .spices)
-        ], instructions: "鸡丁加生抽抓匀；热锅下油爆香干辣椒，入鸡丁炒至变色，加入花生翻匀，少许糖和醋调味。", instructionsEn: "See Chinese steps", nutrition: "川菜经典", nutritionEn: "Sichuan style", cuisine: "川菜"),
+        ], instructions: "鸡肉切丁，加少许盐、生抽、淀粉抓匀腌10分钟。调一碗料汁：生抽+陈醋+白糖+少量清水。热锅下油爆香干辣椒与花椒，入鸡丁大火快炒至变色，倒入料汁翻炒收浓，最后加入花生翻匀出锅。", instructionsEn: "See Chinese steps", nutrition: "川菜经典", nutritionEn: "Sichuan style", cuisine: "川菜"),
         Recipe(name: "剁椒鱼头", nameEn: "Chopped Chili Fish Head", mealType: .dinner, ingredients: [
             Ingredient(name: "鱼头", quantity: 1, unit: "份", category: .protein),
             Ingredient(name: "剁椒", quantity: 30, unit: "g", category: .spices),
             Ingredient(name: "葱姜", quantity: 10, unit: "g", category: .spices)
-        ], instructions: "鱼头抹盐与料酒腌10分钟；铺剁椒与葱姜，蒸12–15分钟，淋热油。", instructionsEn: "See Chinese steps", nutrition: "湘菜代表", nutritionEn: "Hunan style", cuisine: "湘菜"),
+        ], instructions: "鱼头洗净擦干，抹盐和料酒腌10分钟；铺上剁椒、葱姜。水开后上锅蒸12–15分钟，出锅淋热油和少许蒸鱼豉油即可。", instructionsEn: "See Chinese steps", nutrition: "湘菜代表", nutritionEn: "Hunan style", cuisine: "湘菜"),
         Recipe(name: "回锅肉", nameEn: "Twice-Cooked Pork", mealType: .dinner, ingredients: [
             Ingredient(name: "五花肉", quantity: 200, unit: "g", category: .protein),
             Ingredient(name: "青蒜", quantity: 80, unit: "g", category: .produce),
             Ingredient(name: "豆瓣酱", quantity: 15, unit: "g", category: .spices)
-        ], instructions: "五花肉煮至八分熟切片；热锅少油下豆瓣酱炒香，入肉片与青蒜翻炒。", instructionsEn: "See Chinese steps", nutrition: "川菜家常", nutritionEn: "Sichuan style", cuisine: "川菜"),
+        ], instructions: "五花肉冷水下锅加姜片煮至八成熟，捞出放凉切薄片。热锅少油下豆瓣酱炒出红油，放蒜片与青蒜梗炒香，入肉片翻炒卷曲，最后下青蒜叶快速翻匀，淋少许生抽出锅。", instructionsEn: "See Chinese steps", nutrition: "川菜家常", nutritionEn: "Sichuan style", cuisine: "川菜"),
         Recipe(name: "小炒黄牛肉", nameEn: "Stir-fried Beef", mealType: .lunch, ingredients: [
             Ingredient(name: "牛肉", quantity: 180, unit: "g", category: .protein),
             Ingredient(name: "尖椒", quantity: 100, unit: "g", category: .produce),
             Ingredient(name: "豆豉", quantity: 5, unit: "g", category: .spices)
-        ], instructions: "牛肉切片腌制；热锅大火快炒牛肉至变色，加入尖椒与豆豉炒香。", instructionsEn: "See Chinese steps", nutrition: "湘菜风味", nutritionEn: "Hunan style", cuisine: "湘菜"),
+        ], instructions: "牛肉逆纹切片，加生抽、少许淀粉腌10分钟。大火热锅下油，牛肉快速滑炒至变色盛出；锅中余油下豆豉与尖椒炒香，回锅牛肉翻匀，少许盐调味。", instructionsEn: "See Chinese steps", nutrition: "湘菜风味", nutritionEn: "Hunan style", cuisine: "湘菜"),
         Recipe(name: "紫菜蛋花汤", nameEn: "Seaweed Egg Soup", mealType: .dinner, ingredients: [
             Ingredient(name: "紫菜", quantity: 5, unit: "g", category: .pantry),
             Ingredient(name: "鸡蛋", quantity: 1, unit: "pcs", category: .protein),
             Ingredient(name: "香葱", quantity: 5, unit: "g", category: .spices)
-        ], instructions: "水开下紫菜；鸡蛋打散淋入成蛋花，加盐和葱花。", instructionsEn: "See Chinese steps", nutrition: "清淡汤品", nutritionEn: "Light soup", cuisine: "家常"),
+        ], instructions: "水开下紫菜煮1分钟；鸡蛋打散沿锅边缓慢淋入成蛋花；加盐与葱花即可。", instructionsEn: "See Chinese steps", nutrition: "清淡汤品", nutritionEn: "Light soup", cuisine: "家常"),
         Recipe(name: "酸辣汤", nameEn: "Hot and Sour Soup", mealType: .lunch, ingredients: [
             Ingredient(name: "木耳", quantity: 10, unit: "g", category: .produce),
             Ingredient(name: "豆腐", quantity: 80, unit: "g", category: .protein),
             Ingredient(name: "醋", quantity: 10, unit: "ml", category: .spices)
-        ], instructions: "木耳泡发切丝；汤底加醋胡椒，放豆腐木耳煮3分钟，淋蛋花。", instructionsEn: "See Chinese steps", nutrition: "开胃", nutritionEn: "Appetizing", cuisine: "家常"),
+        ], instructions: "木耳泡发切丝，豆腐切条。锅中加水煮开，下木耳与豆腐煮3分钟；加入酱油、白醋、白胡椒调味，淋入蛋液成蛋花，最后加香油与葱花。", instructionsEn: "See Chinese steps", nutrition: "开胃", nutritionEn: "Appetizing", cuisine: "家常"),
         Recipe(name: "冬瓜排骨汤", nameEn: "Winter Melon Rib Soup", mealType: .dinner, ingredients: [
             Ingredient(name: "排骨", quantity: 200, unit: "g", category: .protein),
             Ingredient(name: "冬瓜", quantity: 200, unit: "g", category: .produce),
             Ingredient(name: "姜", quantity: 5, unit: "g", category: .spices)
-        ], instructions: "排骨焯水后加姜片炖20分钟；加入冬瓜再煮10分钟调味。", instructionsEn: "See Chinese steps", nutrition: "清润", nutritionEn: "Light broth", cuisine: "家常"),
+        ], instructions: "排骨冷水下锅焯水去血沫；另起锅加姜片炖20分钟。加入冬瓜块再煮10–15分钟至透明，调盐即可。", instructionsEn: "See Chinese steps", nutrition: "清润", nutritionEn: "Light broth", cuisine: "家常"),
         Recipe(name: "番茄炒蛋", nameEn: "Tomato Egg Stir-fry", mealType: .dinner, ingredients: [
             Ingredient(name: "鸡蛋", quantity: 2, unit: "pcs", category: .protein),
             Ingredient(name: "番茄", quantity: 150, unit: "g", category: .produce),
             Ingredient(name: "葱", quantity: 5, unit: "g", category: .spices)
-        ], instructions: "鸡蛋炒散盛出；番茄炒出汁回锅鸡蛋，撒葱花。", instructionsEn: "See Chinese steps", nutrition: "家常", nutritionEn: "Home-style", cuisine: "家常")
+        ], instructions: "鸡蛋打散炒到凝固盛出；番茄切块炒出汁，回锅鸡蛋翻匀，撒葱花与少许糖提鲜。", instructionsEn: "See Chinese steps", nutrition: "家常", nutritionEn: "Home-style", cuisine: "家常")
     ]
 }

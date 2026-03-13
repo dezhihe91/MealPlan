@@ -31,16 +31,14 @@ struct WeeklyPlanView: View {
                             Section(header: Text(day.date.formatted(date: .abbreviated, time: .omitted))) {
                                 ForEach(MealType.allCases) { mealType in
                                     if let recipes = day.meals[mealType] {
-                                        ForEach(recipes) { recipe in
-                                            NavigationLink(destination: RecipeDetailView(recipe: recipe)) {
-                                                HStack(spacing: 8) {
-                                                    Text(mealType.title(for: store.language))
-                                                        .font(.subheadline)
-                                                        .foregroundColor(.secondary)
-                                                        .frame(width: store.language == .chinese ? 48 : 44, alignment: .leading)
-                                                    Text(recipe.displayName(for: store.language))
-                                                        .font(.subheadline)
-                                                }
+                                        NavigationLink(destination: MealDetailView(mealType: mealType, recipes: recipes)) {
+                                            HStack {
+                                                Text(mealType.title(for: store.language))
+                                                    .font(.subheadline)
+                                                Spacer()
+                                                Text("\(recipes.count) \(store.language == .chinese ? "道" : "dishes")")
+                                                    .font(.subheadline)
+                                                    .foregroundColor(.secondary)
                                             }
                                         }
                                     }
