@@ -19,9 +19,6 @@ struct WeeklyPlanView: View {
                                     .padding(.horizontal, 8)
                                     .background(store.selectedTemplate == template ? Color.accentColor.opacity(0.2) : Color.gray.opacity(0.15))
                                     .cornerRadius(8)
-                            } label: {
-                                Text(day.date.formatted(date: .abbreviated, time: .omitted))
-                                    .font(.headline)
                             }
                         }
                     }
@@ -45,9 +42,6 @@ struct WeeklyPlanView: View {
                                     .padding(.horizontal, 8)
                                     .background(store.groceryDays.contains(day) ? Color.accentColor.opacity(0.2) : Color.gray.opacity(0.15))
                                     .cornerRadius(8)
-                            } label: {
-                                Text(day.date.formatted(date: .abbreviated, time: .omitted))
-                                    .font(.headline)
                             }
                         }
                     }
@@ -67,12 +61,14 @@ struct WeeklyPlanView: View {
                 if let plan = store.currentPlan {
                     List {
                         ForEach(plan.days) { day in
-                            DisclosureGroup(isExpanded: Binding(
-                                get: { expandedDayIds.contains(day.id) },
-                                set: { expanded in
-                                    if expanded { expandedDayIds.insert(day.id) }
-                                    else { expandedDayIds.remove(day.id) }
-                                })
+                            DisclosureGroup(
+                                day.date.formatted(date: .abbreviated, time: .omitted),
+                                isExpanded: Binding(
+                                    get: { expandedDayIds.contains(day.id) },
+                                    set: { expanded in
+                                        if expanded { expandedDayIds.insert(day.id) }
+                                        else { expandedDayIds.remove(day.id) }
+                                    })
                             ) {
                                 ForEach(MealType.allCases) { mealType in
                                     if let recipes = day.meals[mealType] {
@@ -95,9 +91,6 @@ struct WeeklyPlanView: View {
                                         }
                                     }
                                 }
-                            } label: {
-                                Text(day.date.formatted(date: .abbreviated, time: .omitted))
-                                    .font(.headline)
                             }
                         }
                     }
