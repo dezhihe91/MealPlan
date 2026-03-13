@@ -16,23 +16,24 @@ struct RecipeLibraryView: View {
         return cuisine
     }
 
+    private func isMeatRecipe(_ recipe: Recipe) -> Bool {
+        let meatKeywords = ["鸡", "鸭", "牛", "羊", "猪", "排骨", "鱼", "虾", "贝", "蟹", "肉", "ham", "beef", "pork", "chicken", "fish", "shrimp"]
+        return recipe.ingredients.contains { ingredient in
+            let name = ingredient.name.lowercased()
+            return meatKeywords.contains(where: { name.contains($0) })
+        }
+    }
+
     private var filteredRecipes: [Recipe] {
         var list = store.allRecipes
-        if filterCandidatesOnly {
-            list = list.filter { store.candidateIds.contains($0.id) }
-        }
         if filterLikedOnly {
             list = list.filter { store.likedIds.contains($0.id) }
         }
-        if filterCustomOnly {
-            list = list.filter { recipe in
-                store.customRecipes.contains(where: { $0.id == recipe.id })
-            }
+        if filterMeatOnly {
+            list = list.filter { isMeatRecipe($0) }
         }
-        if filterSystemOnly {
-            list = list.filter { recipe in
-                !store.customRecipes.contains(where: { $0.id == recipe.id })
-            }
+        if filterVegOnly {
+            list = list.filter { !isMeatRecipe($0) }
         }
         if let meal = filterMeal {
             list = list.filter { $0.mealType == meal }
@@ -54,10 +55,9 @@ struct RecipeLibraryView: View {
     @State private var filterMeal: MealType? = nil
     @State private var filterCuisine: String = ""
     @State private var filterSoupOnly: Bool = false
-    @State private var filterCandidatesOnly: Bool = false
     @State private var filterLikedOnly: Bool = false
-    @State private var filterCustomOnly: Bool = false
-    @State private var filterSystemOnly: Bool = false
+    @State private var filterMeatOnly: Bool = false
+    @State private var filterVegOnly: Bool = false
 
     var body: some View {
         NavigationStack {
@@ -75,11 +75,10 @@ struct RecipeLibraryView: View {
                             Text(cuisineLabel(cuisine)).tag(cuisine)
                         }
                     }
-                    Toggle(store.language == .chinese ? "只看汤品" : "Soup only", isOn: $filterSoupOnly)
-                    Toggle(store.language == .chinese ? "只看候选" : "Candidates only", isOn: $filterCandidatesOnly)
                     Toggle(store.language == .chinese ? "只看喜欢" : "Liked only", isOn: $filterLikedOnly)
-                    Toggle(store.language == .chinese ? "只看自定义" : "Custom only", isOn: $filterCustomOnly)
-                    Toggle(store.language == .chinese ? "只看系统" : "System only", isOn: $filterSystemOnly)
+                    Toggle(store.language == .chinese ? "只看荤菜" : "Meat only", isOn: $filterMeatOnly)
+                    Toggle(store.language == .chinese ? "只看素菜" : "Vegetarian only", isOn: $filterVegOnly)
+                    Toggle(store.language == .chinese ? "只看汤品" : "Soup only", isOn: $filterSoupOnly)
                 }
 
                 Section(header: Text(store.language == .chinese ? "候选菜谱" : "Candidate Pool")) {
