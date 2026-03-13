@@ -1,7 +1,7 @@
 import SwiftUI
 
-struct 菜谱DetailView: View {
-    let recipe: 菜谱
+struct RecipeDetailView: View {
+    let recipe: Recipe
 
     var body: some View {
         ScrollView {
