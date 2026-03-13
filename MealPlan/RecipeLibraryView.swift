@@ -16,12 +16,42 @@ struct RecipeLibraryView: View {
         return cuisine
     }
 
-    private func isMeatRecipe(_ recipe: Recipe) -> Bool {
-        let meatKeywords = ["鸡", "鸭", "牛", "羊", "猪", "排骨", "鱼", "虾", "贝", "蟹", "肉", "ham", "beef", "pork", "chicken", "fish", "shrimp"]
-        return recipe.ingredients.contains { ingredient in
-            let name = ingredient.name.lowercased()
-            return meatKeywords.contains(where: { name.contains($0) })
+    private func filterChip(title: String, isOn: Bool, action: @escaping () -> Void) -> some View {
+        Button(action: action) {
+            Text(title)
+                .font(.caption)
+                .padding(.vertical, 6)
+                .padding(.horizontal, 10)
+                .background(isOn ? Color.accentColor.opacity(0.2) : Color.gray.opacity(0.15))
+                .cornerRadius(8)
         }
+        .buttonStyle(.plain)
+    }
+
+    private func isMeatRecipe(_ recipe: Recipe) -> Bool {
+        let cnKeywords = ["鸡肉", "牛肉", "猪肉", "羊肉", "鸭肉", "排骨", "鱼", "虾", "蟹", "贝", "五花肉", "牛腩", "腊肉", "培根", "火腿", "香肠", "鱼片", "鱼头"]
+        let enKeywords = ["chicken", "beef", "pork", "lamb", "duck", "rib", "fish", "shrimp", "crab", "clam", "bacon", "ham", "sausage", "steak"]
+        let names = recipe.ingredients.map { $0.name.lowercased() } + [recipe.displayName(for: .english).lowercased(), recipe.displayName(for: .chinese).lowercased()]
+
+        for name in names {
+            if name.contains("鸡蛋") || name.contains("蛋") {
+                // treat eggs as non-meat unless meat keyword also present
+                if cnKeywords.contains(where: { name.contains($0) }) { return true }
+                continue
+            }
+            if cnKeywords.contains(where: { name.contains($0) }) { return true }
+            if enKeywords.contains(where: { name.contains($0) }) { return true }
+        }
+        return false
+    }
+
+    private func isSoupRecipe(_ recipe: Recipe) -> Bool {
+        if recipe.isSoup { return true }
+        let name = recipe.displayName(for: store.language).lowercased()
+        if store.language == .chinese {
+            return name.contains("汤") || name.contains("羹") || name.contains("粥")
+        }
+        return name.contains("soup") || name.contains("broth") || name.contains("congee")
     }
 
     private var filteredRecipes: [Recipe] {
@@ -42,7 +72,7 @@ struct RecipeLibraryView: View {
             list = list.filter { $0.cuisine == filterCuisine }
         }
         if filterSoupOnly {
-            list = list.filter { $0.isSoup }
+            list = list.filter { isSoupRecipe($0) }
         }
         if !searchText.isEmpty {
             list = list.filter { $0.displayName(for: store.language).localizedCaseInsensitiveContains(searchText) }
@@ -75,10 +105,27 @@ struct RecipeLibraryView: View {
                             Text(cuisineLabel(cuisine)).tag(cuisine)
                         }
                     }
-                    Toggle(store.language == .chinese ? "只看喜欢" : "Liked only", isOn: $filterLikedOnly)
-                    Toggle(store.language == .chinese ? "只看荤菜" : "Meat only", isOn: $filterMeatOnly)
-                    Toggle(store.language == .chinese ? "只看素菜" : "Vegetarian only", isOn: $filterVegOnly)
-                    Toggle(store.language == .chinese ? "只看汤品" : "Soup only", isOn: $filterSoupOnly)
+                    VStack(alignment: .leading, spacing: 8) {
+                        Text(store.language == .chinese ? "只看" : "Only")
+                            .font(.caption)
+                            .foregroundColor(.secondary)
+                        HStack {
+                            filterChip(title: store.language == .chinese ? "喜欢" : "Liked", isOn: filterLikedOnly) {
+                                filterLikedOnly.toggle()
+                            }
+                            filterChip(title: store.language == .chinese ? "荤菜" : "Meat", isOn: filterMeatOnly) {
+                                filterMeatOnly.toggle()
+                                if filterMeatOnly { filterVegOnly = false }
+                            }
+                            filterChip(title: store.language == .chinese ? "素菜" : "Veg", isOn: filterVegOnly) {
+                                filterVegOnly.toggle()
+                                if filterVegOnly { filterMeatOnly = false }
+                            }
+                            filterChip(title: store.language == .chinese ? "汤品" : "Soup", isOn: filterSoupOnly) {
+                                filterSoupOnly.toggle()
+                            }
+                        }
+                    }
                 }
 
                 Section(header: Text(store.language == .chinese ? "候选菜谱" : "Candidate Pool")) {
