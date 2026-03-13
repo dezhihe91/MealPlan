@@ -26,6 +26,7 @@ final class MealPlanStore: ObservableObject {
             deletedIdsStorage = deletedIds.map { $0.uuidString }.joined(separator: ",")
         }
     }
+    @Published var editedRecipes: [UUID: Recipe] = [:]
 
     @AppStorage("mealplan.reminderEnabled") var reminderEnabled: Bool = false
     @AppStorage("mealplan.reminderTime") private var reminderTimeInterval: Double = Date().timeIntervalSince1970
@@ -50,11 +51,26 @@ final class MealPlanStore: ObservableObject {
     private var lastPlan: WeeklyPlan? = nil
 
     var allRecipes: [Recipe] {
-        (SampleRecipes.allRecipes() + customRecipes).filter { !deletedIds.contains($0.id) }
+        let base = SampleRecipes.allRecipes() + customRecipes
+        return base.compactMap { recipe in
+            guard !deletedIds.contains(recipe.id) else { return nil }
+            if let edited = editedRecipes[recipe.id] {
+                return edited
+            }
+            return recipe
+        }
     }
 
     func addCustomRecipe(_ recipe: Recipe) {
         customRecipes.insert(recipe, at: 0)
+    }
+
+    func updateRecipe(_ recipe: Recipe) {
+        if let idx = customRecipes.firstIndex(where: { $0.id == recipe.id }) {
+            customRecipes[idx] = recipe
+        } else {
+            editedRecipes[recipe.id] = recipe
+        }
     }
 
     func deleteRecipe(_ recipe: Recipe) {
@@ -65,6 +81,7 @@ final class MealPlanStore: ObservableObject {
         }
         candidateIds.remove(recipe.id)
         likedIds.remove(recipe.id)
+        editedRecipes.removeValue(forKey: recipe.id)
     }
 
     func recipesForMeal(_ mealType: MealType) -> [Recipe] {
