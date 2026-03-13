@@ -14,6 +14,7 @@
 		78C21773EBB77BDBFC6B0040 /* WeeklyPlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEC740D5F9AD70E62C84A9E /* WeeklyPlanView.swift */; };
 		8EE3B88554200724750FF47C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1DE26A4A93689DB3D4C7E05E /* Assets.xcassets */; };
 		93921559FDB9983DF783F2D2 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0894AB748C49BA3F61A83A12 /* Models.swift */; };
+		B2727497836AC2EF3BD81542 /* ReminderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EFC9ABD1EB5EFD09AA6F89 /* ReminderManager.swift */; };
 		E1215A1FE840F9794AEF3C3D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CD664803F427B14C7933AC /* ContentView.swift */; };
 		E75DDC31849A32BB9D13458B /* SampleRecipes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E38DBC1371F46CC9C2714B3 /* SampleRecipes.swift */; };
 		F223754FBC21A31600585160 /* RecipeLibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6FF5691D22A7117B434FF63 /* RecipeLibraryView.swift */; };
@@ -29,6 +30,7 @@
 		57155389506C780B1DAA79AD /* MealPlan.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = MealPlan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5946375B168E9FB13EE70A7F /* MealDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealDetailView.swift; sourceTree = "<group>"; };
 		5EEC740D5F9AD70E62C84A9E /* WeeklyPlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyPlanView.swift; sourceTree = "<group>"; };
+		63EFC9ABD1EB5EFD09AA6F89 /* ReminderManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderManager.swift; sourceTree = "<group>"; };
 		8E38DBC1371F46CC9C2714B3 /* SampleRecipes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleRecipes.swift; sourceTree = "<group>"; };
 		96C3B4B7BD01DD4A251F237B /* RecipeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailView.swift; sourceTree = "<group>"; };
 		A6FF5691D22A7117B434FF63 /* RecipeLibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeLibraryView.swift; sourceTree = "<group>"; };
@@ -57,6 +59,7 @@
 				0894AB748C49BA3F61A83A12 /* Models.swift */,
 				96C3B4B7BD01DD4A251F237B /* RecipeDetailView.swift */,
 				A6FF5691D22A7117B434FF63 /* RecipeLibraryView.swift */,
+				63EFC9ABD1EB5EFD09AA6F89 /* ReminderManager.swift */,
 				8E38DBC1371F46CC9C2714B3 /* SampleRecipes.swift */,
 				CFB8C5D1925BDE61FB8FA764 /* SettingsView.swift */,
 				5EEC740D5F9AD70E62C84A9E /* WeeklyPlanView.swift */,
@@ -160,6 +163,7 @@
 				93921559FDB9983DF783F2D2 /* Models.swift in Sources */,
 				FA3AA42137F0BC9C695C1C0D /* RecipeDetailView.swift in Sources */,
 				F223754FBC21A31600585160 /* RecipeLibraryView.swift in Sources */,
+				B2727497836AC2EF3BD81542 /* ReminderManager.swift in Sources */,
 				E75DDC31849A32BB9D13458B /* SampleRecipes.swift in Sources */,
 				5ED3A5AC75386740AE4C4600 /* SettingsView.swift in Sources */,
 				78C21773EBB77BDBFC6B0040 /* WeeklyPlanView.swift in Sources */,
