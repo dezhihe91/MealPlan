@@ -172,6 +172,13 @@ struct RecipeLibraryView: View {
                             ))
                             .labelsHidden()
                         }
+                        .swipeActions {
+                            Button(role: .destructive) {
+                                store.deleteRecipe(recipe)
+                            } label: {
+                                Label(store.language == .chinese ? "删除" : "Delete", systemImage: "trash")
+                            }
+                        }
                     }
                 }
             }

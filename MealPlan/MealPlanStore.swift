@@ -9,6 +9,7 @@ final class MealPlanStore: ObservableObject {
     }
 
     @AppStorage("mealplan.likedIds") private var likedIdsStorage: String = ""
+    @AppStorage("mealplan.deletedIds") private var deletedIdsStorage: String = ""
 
     @Published var selectedTemplate: MealTemplate = .balanced
     @Published var groceryDays: Set<Weekday> = [.sunday]
@@ -20,6 +21,11 @@ final class MealPlanStore: ObservableObject {
             likedIdsStorage = likedIds.map { $0.uuidString }.joined(separator: ",")
         }
     }
+    @Published var deletedIds: Set<UUID> = [] {
+        didSet {
+            deletedIdsStorage = deletedIds.map { $0.uuidString }.joined(separator: ",")
+        }
+    }
 
     @AppStorage("mealplan.reminderEnabled") var reminderEnabled: Bool = false
     @AppStorage("mealplan.reminderTime") private var reminderTimeInterval: Double = Date().timeIntervalSince1970
@@ -29,6 +35,11 @@ final class MealPlanStore: ObservableObject {
             .split(separator: ",")
             .compactMap { UUID(uuidString: String($0)) }
         likedIds = Set(stored)
+
+        let deletedStored = deletedIdsStorage
+            .split(separator: ",")
+            .compactMap { UUID(uuidString: String($0)) }
+        deletedIds = Set(deletedStored)
     }
 
     var reminderTime: Date {
@@ -39,11 +50,25 @@ final class MealPlanStore: ObservableObject {
     private var lastPlan: WeeklyPlan? = nil
 
     var allRecipes: [Recipe] {
-        SampleRecipes.allRecipes() + customRecipes
+        (SampleRecipes.allRecipes() + customRecipes).filter { !deletedIds.contains($0.id) }
     }
 
     func addCustomRecipe(_ recipe: Recipe) {
         customRecipes.insert(recipe, at: 0)
+    }
+
+    func deleteRecipe(_ recipe: Recipe) {
+        if let idx = customRecipes.firstIndex(where: { $0.id == recipe.id }) {
+            customRecipes.remove(at: idx)
+        } else {
+            deletedIds.insert(recipe.id)
+        }
+        candidateIds.remove(recipe.id)
+        likedIds.remove(recipe.id)
+    }
+
+    func recipesForMeal(_ mealType: MealType) -> [Recipe] {
+        allRecipes.filter { $0.mealType == mealType }
     }
 
     func generatePlan(repeatLastWeek: Bool = false) {
@@ -110,7 +135,7 @@ final class MealPlanStore: ObservableObject {
     }
 
     func regenerateMeal(dayId: UUID, mealType: MealType) {
-        guard var plan = currentPlan else { return }
+        guard let plan = currentPlan else { return }
         let recipes = candidatePool().filter { $0.mealType == mealType }
         guard !recipes.isEmpty else { return }
         var pool = recipes.shuffled()
@@ -132,6 +157,19 @@ final class MealPlanStore: ObservableObject {
         if let idx = plan.days.firstIndex(where: { $0.id == dayId }) {
             var day = plan.days[idx]
             day.meals[mealType] = newMeals
+            var updatedDays = plan.days
+            updatedDays[idx] = day
+            currentPlan = WeeklyPlan(startDate: plan.startDate, days: updatedDays)
+        }
+    }
+
+    func updateMeal(dayId: UUID, mealType: MealType, recipeIds: Set<UUID>) {
+        guard let plan = currentPlan else { return }
+        let selected = allRecipes.filter { recipeIds.contains($0.id) }
+        guard !selected.isEmpty else { return }
+        if let idx = plan.days.firstIndex(where: { $0.id == dayId }) {
+            var day = plan.days[idx]
+            day.meals[mealType] = selected
             var updatedDays = plan.days
             updatedDays[idx] = day
             currentPlan = WeeklyPlan(startDate: plan.startDate, days: updatedDays)
