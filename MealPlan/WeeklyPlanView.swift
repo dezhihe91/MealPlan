@@ -12,6 +12,7 @@ struct WeeklyPlanView: View {
                     }
                 }
                 .pickerStyle(.segmented)
+
                 HStack(spacing: 12) {
                     Button("Generate Plan") {
                         store.generatePlan()
@@ -30,22 +31,7 @@ struct WeeklyPlanView: View {
                             Section(header: Text(day.date.formatted(date: .abbreviated, time: .omitted))) {
                                 ForEach(MealType.allCases) { mealType in
                                     if let recipes = day.meals[mealType] {
-                                        VStack(alignment: .leading, spacing: 8) {
-                                            Text(mealType.title)
-                                                .font(.headline)
-                                            ForEach(recipes) { recipe in
-                                                NavigationLink(destination: RecipeDetailView(recipe: recipe)) {
-                                                    VStack(alignment: .leading, spacing: 4) {
-                                                        Text(recipe.name)
-                                                            .font(.subheadline)
-                                                        Text(recipe.instructions)
-                                                            .font(.footnote)
-                                                            .foregroundColor(.secondary)
-                                                            .lineLimit(2)
-                                                    }
-                                                }
-                                            }
-                                        }
+                                        MealSectionView(mealType: mealType, recipes: recipes)
                                     }
                                 }
                             }
@@ -67,6 +53,30 @@ struct WeeklyPlanView: View {
             }
             .padding(.horizontal)
             .navigationTitle("Weekly Plan")
+        }
+    }
+}
+
+private struct MealSectionView: View {
+    let mealType: MealType
+    let recipes: [Recipe]
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            Text(mealType.title)
+                .font(.headline)
+            ForEach(recipes) { recipe in
+                NavigationLink(destination: RecipeDetailView(recipe: recipe)) {
+                    VStack(alignment: .leading, spacing: 4) {
+                        Text(recipe.name)
+                            .font(.subheadline)
+                        Text(recipe.instructions)
+                            .font(.footnote)
+                            .foregroundColor(.secondary)
+                            .lineLimit(2)
+                    }
+                }
+            }
         }
     }
 }
