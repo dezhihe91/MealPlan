@@ -46,7 +46,7 @@ struct RecipeDetailView: View {
                     Text("详细步骤")
                         .font(.headline)
                     let steps = stepsFromInstructions(recipe.instructions)
-                    ForEach(Array(steps.enumerated()), id: \.(offset)) { index, step in
+                    ForEach(Array(steps.enumerated()), id: \.offset) { index, step in
                         Text("\(index + 1). \(step)")
                             .font(.body)
                     }
