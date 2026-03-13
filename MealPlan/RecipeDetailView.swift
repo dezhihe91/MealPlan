@@ -17,7 +17,7 @@ struct RecipeDetailView: View {
                 }
 
                 VStack(alignment: .leading, spacing: 8) {
-                    Text("食材")
+                    Text("食材准备")
                         .font(.headline)
                     ForEach(recipe.ingredients) { item in
                         Text("• \(item.name) — \(item.quantity, specifier: "%.1f") \(item.unit)")
@@ -26,7 +26,7 @@ struct RecipeDetailView: View {
                 }
 
                 VStack(alignment: .leading, spacing: 8) {
-                    Text("做法")
+                    Text("详细步骤")
                         .font(.headline)
                     Text(recipe.instructions)
                         .font(.body)

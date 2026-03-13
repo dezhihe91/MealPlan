@@ -6,20 +6,20 @@ struct WeeklyPlanView: View {
     var body: some View {
         NavigationStack {
             VStack(spacing: 16) {
-                Picker("Template", selection: $store.selectedTemplate) {
+                Picker("模板", selection: $store.selectedTemplate) {
                     ForEach(MealTemplate.allCases) { template in
                         Text(template.title).tag(template)
                     }
                 }
-                .pickerStyle(.segmented)
+                .pickerStyle(.menu)
 
                 HStack(spacing: 12) {
-                    Button("Generate Plan") {
+                    Button("生成计划") {
                         store.generatePlan()
                     }
                     .buttonStyle(.borderedProminent)
 
-                    Button("Repeat Last Week") {
+                    Button("重复上周") {
                         store.generatePlan(repeatLastWeek: true)
                     }
                     .buttonStyle(.bordered)
@@ -42,9 +42,9 @@ struct WeeklyPlanView: View {
                         Image(systemName: "calendar")
                             .font(.system(size: 36))
                             .foregroundColor(.secondary)
-                        Text("No plan yet")
+                        Text("暂无计划")
                             .font(.headline)
-                        Text("Generate a weekly plan to get started.")
+                        Text("点击生成计划开始使用")
                             .font(.subheadline)
                             .foregroundColor(.secondary)
                     }
@@ -52,7 +52,7 @@ struct WeeklyPlanView: View {
                 }
             }
             .padding(.horizontal)
-            .navigationTitle("Weekly Plan")
+            .navigationTitle("本周计划")
         }
     }
 }

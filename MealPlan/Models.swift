@@ -59,11 +59,11 @@ enum MealTemplate: String, CaseIterable, Identifiable {
     var id: String { rawValue }
     var title: String {
         switch self {
-        case .balanced: return "Balanced"
-        case .pregnancy: return "Pregnancy"
-        case .muscleGain: return "Muscle Gain"
-        case .fatLoss: return "Fat Loss"
-        case .mediterranean: return "Mediterranean"
+        case .balanced: return "日常均衡"
+        case .pregnancy: return "孕期营养"
+        case .muscleGain: return "健身增肌"
+        case .fatLoss: return "减脂控卡"
+        case .mediterranean: return "地中海"
         }
     }
 }
