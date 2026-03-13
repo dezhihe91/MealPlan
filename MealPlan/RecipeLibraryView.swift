@@ -8,6 +8,14 @@ struct RecipeLibraryView: View {
         return Array(Set(cuisines)).sorted()
     }
 
+    private func cuisineLabel(_ cuisine: String) -> String {
+        if store.language == .english {
+            let map: [String: String] = ["川菜": "Sichuan", "湘菜": "Hunan", "粤菜": "Cantonese", "家常": "Home-style"]
+            return map[cuisine] ?? cuisine
+        }
+        return cuisine
+    }
+
     private var filteredRecipes: [Recipe] {
         var list = store.allRecipes
         if filterCandidatesOnly {
@@ -48,7 +56,7 @@ struct RecipeLibraryView: View {
                     Picker(store.language == .chinese ? "菜系" : "Cuisine", selection: $filterCuisine) {
                         Text(store.language == .chinese ? "全部" : "All").tag("")
                         ForEach(cuisineOptions, id: \.self) { cuisine in
-                            Text(cuisine).tag(cuisine)
+                            Text(cuisineLabel(cuisine)).tag(cuisine)
                         }
                     }
                     Toggle(store.language == .chinese ? "只看汤品" : "Soup only", isOn: $filterSoupOnly)

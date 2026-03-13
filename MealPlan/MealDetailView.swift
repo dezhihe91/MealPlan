@@ -32,7 +32,7 @@ struct MealDetailView: View {
                     VStack(alignment: .leading, spacing: 4) {
                         Text(recipe.displayName(for: store.language))
                             .font(.headline)
-                        if let cuisine = recipe.cuisine, !cuisine.isEmpty {
+                        if let cuisine = recipe.displayCuisine(for: store.language) {
                             Text(cuisine)
                                 .font(.subheadline)
                                 .foregroundColor(.secondary)

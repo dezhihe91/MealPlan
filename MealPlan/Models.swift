@@ -159,6 +159,15 @@ struct Recipe: Identifiable {
         return instructions
     }
 
+    func displayCuisine(for language: AppLanguage) -> String? {
+        guard let cuisine, !cuisine.isEmpty else { return nil }
+        if language == .english {
+            let map: [String: String] = ["川菜": "Sichuan", "湘菜": "Hunan", "粤菜": "Cantonese", "家常": "Home-style"]
+            return map[cuisine] ?? cuisine
+        }
+        return cuisine
+    }
+
     func displayNutrition(for language: AppLanguage) -> String? {
         if language == .english {
             return nutritionEn ?? nutrition
@@ -273,6 +282,63 @@ extension Ingredient {
         case .spices, .other:
             return (5 * factor, 0 * factor, 1 * factor, 0 * factor)
         }
+    }
+}
+
+extension Ingredient {
+    func displayName(for language: AppLanguage) -> String {
+        guard language == .english else { return name }
+        let map: [String: String] = [
+            "盐": "Salt",
+            "食用油": "Cooking oil",
+            "鸡胸肉": "Chicken breast",
+            "黄瓜": "Cucumber",
+            "蒜": "Garlic",
+            "葱": "Scallion",
+            "酱油": "Soy sauce",
+            "牛肉": "Beef",
+            "五花肉": "Pork belly",
+            "排骨": "Pork ribs",
+            "冬瓜": "Winter melon",
+            "豆腐": "Tofu",
+            "木耳": "Wood ear mushrooms",
+            "番茄": "Tomato",
+            "青菜": "Greens",
+            "西兰花": "Broccoli",
+            "鸡蛋": "Egg",
+            "牛腩": "Beef brisket",
+            "鱼头": "Fish head",
+            "鱼片": "Fish slices",
+            "剁椒": "Chopped chiles",
+            "泡椒": "Pickled chiles",
+            "青蒜": "Garlic shoots",
+            "尖椒": "Green chiles",
+            "花生": "Peanuts",
+            "花椒": "Sichuan peppercorns",
+            "姜": "Ginger",
+            "紫菜": "Seaweed",
+            "皮蛋": "Century egg",
+            "瘦肉": "Lean pork",
+            "豆浆": "Soy milk",
+            "油条": "Youtiao",
+            "面条": "Noodles",
+            "大米": "Rice",
+            "燕麦": "Oats",
+            "小米": "Millet",
+            "南瓜": "Pumpkin",
+            "红枣": "Jujube",
+            "枸杞": "Goji berries",
+            "虾仁": "Shrimp",
+            "葱姜": "Scallion & ginger",
+            "豆瓣酱": "Doubanjiang",
+            "豆豉": "Fermented black beans",
+            "白萝卜": "Daikon",
+            "橄榄油": "Olive oil",
+            "鹰嘴豆": "Chickpeas",
+            "藜麦": "Quinoa",
+            "米饭": "Cooked rice"
+        ]
+        return map[name] ?? name
     }
 }
 

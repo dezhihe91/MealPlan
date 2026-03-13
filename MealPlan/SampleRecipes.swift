@@ -68,21 +68,21 @@ struct SampleRecipes {
             Ingredient(name: "Bell pepper", quantity: 100, unit: "g", category: .produce),
             Ingredient(name: "Rice", quantity: 80, unit: "g", category: .grains)
         ], instructions: "牛肉切片抓少许酱油；彩椒切块；大火快炒牛肉至变色，加入彩椒炒匀，配米饭。", nutrition: "Iron + protein"),
-        Recipe(name: "番茄鸡蛋炒饭", mealType: .dinner, ingredients: [
+        Recipe(name: "番茄鸡蛋炒饭", nameEn: "Tomato Egg Fried Rice", mealType: .dinner, ingredients: [
             Ingredient(name: "盐", quantity: 1, unit: "g", category: .spices),
             Ingredient(name: "食用油", quantity: 5, unit: "ml", category: .pantry),
             Ingredient(name: "米饭", quantity: 150, unit: "g", category: .grains),
             Ingredient(name: "鸡蛋", quantity: 2, unit: "pcs", category: .protein),
             Ingredient(name: "番茄", quantity: 120, unit: "g", category: .produce)
         ], instructions: "鸡蛋打散下锅炒到凝固盛出；番茄切块下锅炒出汁，加少许盐；倒入米饭翻炒松散，再回锅鸡蛋拌匀，撒葱花。", nutrition: "家常均衡"),
-        Recipe(name: "清炒时蔬", mealType: .lunch, ingredients: [
+        Recipe(name: "清炒时蔬", nameEn: "Stir-fried Vegetables", mealType: .lunch, ingredients: [
             Ingredient(name: "盐", quantity: 1, unit: "g", category: .spices),
             Ingredient(name: "食用油", quantity: 5, unit: "ml", category: .pantry),
             Ingredient(name: "西兰花", quantity: 120, unit: "g", category: .produce),
             Ingredient(name: "蒜", quantity: 5, unit: "g", category: .spices),
             Ingredient(name: "食用油", quantity: 8, unit: "ml", category: .pantry)
         ], instructions: "蒜末少油小火爆香；下西兰花大火快炒至断生；加少许盐和胡椒，关火出锅。", nutrition: "高纤维"),
-        Recipe(name: "小米南瓜粥", mealType: .breakfast, ingredients: [
+        Recipe(name: "小米南瓜粥", nameEn: "Millet Pumpkin Porridge", mealType: .breakfast, ingredients: [
             Ingredient(name: "盐", quantity: 1, unit: "g", category: .spices),
             Ingredient(name: "食用油", quantity: 5, unit: "ml", category: .pantry),
             Ingredient(name: "小米", quantity: 60, unit: "g", category: .grains),
@@ -112,7 +112,7 @@ struct SampleRecipes {
             Ingredient(name: "Sweet potato", quantity: 180, unit: "g", category: .produce),
             Ingredient(name: "Green beans", quantity: 100, unit: "g", category: .produce)
         ], instructions: "红薯切块先烤15分钟；鳕鱼抹盐胡椒同烤12分钟；豆角蒸熟。", nutrition: "Lean protein + vitamin A"),
-        Recipe(name: "牛油果吐司", mealType: .breakfast, ingredients: [
+        Recipe(name: "牛油果吐司", nameEn: "Avocado Toast", mealType: .breakfast, ingredients: [
             Ingredient(name: "盐", quantity: 1, unit: "g", category: .spices),
             Ingredient(name: "食用油", quantity: 5, unit: "ml", category: .pantry),
             Ingredient(name: "Whole wheat bread", quantity: 2, unit: "slices", category: .grains),
@@ -133,14 +133,14 @@ struct SampleRecipes {
             Ingredient(name: "Quinoa", quantity: 70, unit: "g", category: .grains),
             Ingredient(name: "Zucchini", quantity: 100, unit: "g", category: .produce)
         ], instructions: "藜麦按1:2水煮12–15分钟；鸡胸肉煎/烤熟切片；西葫芦快炒。", nutrition: "Complete protein"),
-        Recipe(name: "猪肝菠菜汤", mealType: .lunch, ingredients: [
+        Recipe(name: "猪肝菠菜汤", nameEn: "Pork Liver Spinach Soup", mealType: .lunch, ingredients: [
             Ingredient(name: "盐", quantity: 1, unit: "g", category: .spices),
             Ingredient(name: "食用油", quantity: 5, unit: "ml", category: .pantry),
             Ingredient(name: "猪肝", quantity: 120, unit: "g", category: .protein),
             Ingredient(name: "菠菜", quantity: 80, unit: "g", category: .produce),
             Ingredient(name: "姜", quantity: 5, unit: "g", category: .spices)
         ], instructions: "猪肝切片加料酒抓匀，沸水焯10秒捞出；另起水加姜片煮开，下猪肝与菠菜，沸后调盐和少许胡椒。", nutrition: "补铁"),
-        Recipe(name: "红枣枸杞燕麦粥", mealType: .breakfast, ingredients: [
+        Recipe(name: "红枣枸杞燕麦粥", nameEn: "Jujube Goji Oat Porridge", mealType: .breakfast, ingredients: [
             Ingredient(name: "盐", quantity: 1, unit: "g", category: .spices),
             Ingredient(name: "食用油", quantity: 5, unit: "ml", category: .pantry),
             Ingredient(name: "燕麦", quantity: 60, unit: "g", category: .grains),
@@ -192,14 +192,14 @@ struct SampleRecipes {
             Ingredient(name: "Couscous", quantity: 80, unit: "g", category: .grains),
             Ingredient(name: "Broccoli", quantity: 120, unit: "g", category: .produce)
         ], instructions: "三文鱼烤12分钟；库斯库斯按说明冲泡；西兰花蒸熟。", nutrition: "Omega-3"),
-        Recipe(name: "鸡胸肉西兰花", mealType: .dinner, ingredients: [
+        Recipe(name: "鸡胸肉西兰花", nameEn: "Chicken Breast with Broccoli", mealType: .dinner, ingredients: [
             Ingredient(name: "盐", quantity: 1, unit: "g", category: .spices),
             Ingredient(name: "食用油", quantity: 5, unit: "ml", category: .pantry),
             Ingredient(name: "鸡胸肉", quantity: 180, unit: "g", category: .protein),
             Ingredient(name: "西兰花", quantity: 150, unit: "g", category: .produce),
             Ingredient(name: "黑胡椒", quantity: 2, unit: "g", category: .spices)
         ], instructions: "鸡胸肉切厚片少油煎熟撒黑胡椒；西兰花焯水30秒后快炒出锅。", nutrition: "高蛋白"),
-        Recipe(name: "牛肉面（清汤）", mealType: .lunch, ingredients: [
+        Recipe(name: "牛肉面（清汤）", nameEn: "Beef Noodle Soup", mealType: .lunch, ingredients: [
             Ingredient(name: "盐", quantity: 1, unit: "g", category: .spices),
             Ingredient(name: "食用油", quantity: 5, unit: "ml", category: .pantry),
             Ingredient(name: "牛肉", quantity: 150, unit: "g", category: .protein),
@@ -251,14 +251,14 @@ struct SampleRecipes {
             Ingredient(name: "Asparagus", quantity: 120, unit: "g", category: .produce),
             Ingredient(name: "Lemon", quantity: 0.5, unit: "piece", category: .produce)
         ], instructions: "鳕鱼抹少许盐和柠檬汁烤12分钟；芦笋蒸熟。", nutrition: "Lean protein"),
-        Recipe(name: "冬瓜虾仁", mealType: .dinner, ingredients: [
+        Recipe(name: "冬瓜虾仁", nameEn: "Winter Melon Shrimp", mealType: .dinner, ingredients: [
             Ingredient(name: "盐", quantity: 1, unit: "g", category: .spices),
             Ingredient(name: "食用油", quantity: 5, unit: "ml", category: .pantry),
             Ingredient(name: "冬瓜", quantity: 200, unit: "g", category: .produce),
             Ingredient(name: "虾仁", quantity: 150, unit: "g", category: .protein),
             Ingredient(name: "姜", quantity: 5, unit: "g", category: .spices)
         ], instructions: "姜片少油爆香，下虾仁炒至变色；加入冬瓜片翻炒，加少量水焖5分钟至透明。", nutrition: "低脂"),
-        Recipe(name: "凉拌鸡丝", mealType: .lunch, ingredients: [
+        Recipe(name: "凉拌鸡丝", nameEn: "Shredded Chicken Salad", mealType: .lunch, ingredients: [
             Ingredient(name: "盐", quantity: 1, unit: "g", category: .spices),
             Ingredient(name: "食用油", quantity: 5, unit: "ml", category: .pantry),
             Ingredient(name: "鸡胸肉", quantity: 140, unit: "g", category: .protein),
@@ -268,56 +268,56 @@ struct SampleRecipes {
 ]
 
     private static let mediterranean: [Recipe] = [
-        Recipe(name: "希腊酸奶配蜂蜜", mealType: .breakfast, ingredients: [
+        Recipe(name: "希腊酸奶配蜂蜜", nameEn: "Greek Yogurt with Honey", mealType: .breakfast, ingredients: [
             Ingredient(name: "盐", quantity: 1, unit: "g", category: .spices),
             Ingredient(name: "食用油", quantity: 5, unit: "ml", category: .pantry),
             Ingredient(name: "Greek yogurt", quantity: 200, unit: "g", category: .dairy),
             Ingredient(name: "Honey", quantity: 10, unit: "g", category: .pantry),
             Ingredient(name: "Walnuts", quantity: 15, unit: "g", category: .pantry)
         ], instructions: "酸奶加蜂蜜，撒核桃碎。", nutrition: "Healthy fats"),
-        Recipe(name: "地中海沙拉", mealType: .lunch, ingredients: [
+        Recipe(name: "地中海沙拉", nameEn: "Mediterranean Salad", mealType: .lunch, ingredients: [
             Ingredient(name: "盐", quantity: 1, unit: "g", category: .spices),
             Ingredient(name: "食用油", quantity: 5, unit: "ml", category: .pantry),
             Ingredient(name: "Tomato", quantity: 100, unit: "g", category: .produce),
             Ingredient(name: "Cucumber", quantity: 80, unit: "g", category: .produce),
             Ingredient(name: "Feta", quantity: 40, unit: "g", category: .dairy)
         ], instructions: "番茄黄瓜切块，加菲达与橄榄油拌匀。", nutrition: "Fresh & light"),
-        Recipe(name: "橄榄油白鱼配藜麦", mealType: .dinner, ingredients: [
+        Recipe(name: "橄榄油白鱼配藜麦", nameEn: "Olive Oil Fish with Quinoa", mealType: .dinner, ingredients: [
             Ingredient(name: "盐", quantity: 1, unit: "g", category: .spices),
             Ingredient(name: "食用油", quantity: 5, unit: "ml", category: .pantry),
             Ingredient(name: "White fish", quantity: 150, unit: "g", category: .protein),
             Ingredient(name: "Quinoa", quantity: 70, unit: "g", category: .grains),
             Ingredient(name: "Olive oil", quantity: 10, unit: "ml", category: .pantry)
         ], instructions: "白鱼抹橄榄油烤熟；藜麦煮好装盘。", nutrition: "Mediterranean"),
-        Recipe(name: "牛油果吐司", mealType: .breakfast, ingredients: [
+        Recipe(name: "牛油果吐司", nameEn: "Avocado Toast", mealType: .breakfast, ingredients: [
             Ingredient(name: "盐", quantity: 1, unit: "g", category: .spices),
             Ingredient(name: "食用油", quantity: 5, unit: "ml", category: .pantry),
             Ingredient(name: "Whole wheat bread", quantity: 2, unit: "slices", category: .grains),
             Ingredient(name: "Avocado", quantity: 1, unit: "piece", category: .produce),
             Ingredient(name: "Olive oil", quantity: 5, unit: "ml", category: .pantry)
         ], instructions: "吐司抹牛油果，淋橄榄油，撒少许盐。", nutrition: "Healthy fats"),
-        Recipe(name: "鹰嘴豆沙拉", mealType: .lunch, ingredients: [
+        Recipe(name: "鹰嘴豆沙拉", nameEn: "Chickpea Salad", mealType: .lunch, ingredients: [
             Ingredient(name: "盐", quantity: 1, unit: "g", category: .spices),
             Ingredient(name: "食用油", quantity: 5, unit: "ml", category: .pantry),
             Ingredient(name: "Chickpeas", quantity: 120, unit: "g", category: .pantry),
             Ingredient(name: "Red onion", quantity: 30, unit: "g", category: .produce),
             Ingredient(name: "Olive oil", quantity: 10, unit: "ml", category: .pantry)
         ], instructions: "鹰嘴豆沥干；洋葱切细；拌橄榄油和少许盐。", nutrition: "Fiber-rich"),
-        Recipe(name: "鸡肉炒蔬菜", mealType: .dinner, ingredients: [
+        Recipe(name: "鸡肉炒蔬菜", nameEn: "Chicken Stir Fry", mealType: .dinner, ingredients: [
             Ingredient(name: "盐", quantity: 1, unit: "g", category: .spices),
             Ingredient(name: "食用油", quantity: 5, unit: "ml", category: .pantry),
             Ingredient(name: "Chicken breast", quantity: 150, unit: "g", category: .protein),
             Ingredient(name: "Zucchini", quantity: 100, unit: "g", category: .produce),
             Ingredient(name: "Bell pepper", quantity: 80, unit: "g", category: .produce)
         ], instructions: "鸡肉切块快炒至变色；加入蔬菜炒熟。", nutrition: "Lean protein"),
-        Recipe(name: "橄榄油蒜蓉虾", mealType: .dinner, ingredients: [
+        Recipe(name: "橄榄油蒜蓉虾", nameEn: "Garlic Shrimp with Olive Oil", mealType: .dinner, ingredients: [
             Ingredient(name: "盐", quantity: 1, unit: "g", category: .spices),
             Ingredient(name: "食用油", quantity: 5, unit: "ml", category: .pantry),
             Ingredient(name: "虾仁", quantity: 160, unit: "g", category: .protein),
             Ingredient(name: "橄榄油", quantity: 10, unit: "ml", category: .pantry),
             Ingredient(name: "蒜", quantity: 6, unit: "g", category: .spices)
         ], instructions: "蒜蓉用橄榄油小火炒香，放虾仁快速翻炒至变色，加少许盐胡椒。", nutrition: "地中海风味"),
-        Recipe(name: "番茄鹰嘴豆炖菜", mealType: .lunch, ingredients: [
+        Recipe(name: "番茄鹰嘴豆炖菜", nameEn: "Tomato Chickpea Stew", mealType: .lunch, ingredients: [
             Ingredient(name: "盐", quantity: 1, unit: "g", category: .spices),
             Ingredient(name: "食用油", quantity: 5, unit: "ml", category: .pantry),
             Ingredient(name: "鹰嘴豆", quantity: 120, unit: "g", category: .pantry),
@@ -351,7 +351,7 @@ struct SampleRecipes {
             Ingredient(name: "酸菜", quantity: 120, unit: "g", category: .produce),
             Ingredient(name: "泡椒", quantity: 10, unit: "g", category: .spices)
         ], instructions: "酸菜切段炒香，加水煮开并调味；鱼片用盐和淀粉抓匀，下锅滑入至变色；出锅前淋热油和辣椒段增香。", instructionsEn: "See Chinese steps", nutrition: "川味酸辣", nutritionEn: "Sichuan style", cuisine: "川菜"),
-        Recipe(name: "剁椒蒸豆腐", nameEn: "Steamed Tofu", mealType: .dinner, ingredients: [
+        Recipe(name: "剁椒蒸豆腐", nameEn: "Steamed Tofu with Chopped Chiles", mealType: .dinner, ingredients: [
             Ingredient(name: "豆腐", quantity: 200, unit: "g", category: .protein),
             Ingredient(name: "剁椒", quantity: 20, unit: "g", category: .spices),
             Ingredient(name: "葱姜", quantity: 10, unit: "g", category: .spices)
@@ -376,12 +376,12 @@ struct SampleRecipes {
             Ingredient(name: "青蒜", quantity: 80, unit: "g", category: .produce),
             Ingredient(name: "豆瓣酱", quantity: 15, unit: "g", category: .spices)
         ], instructions: "五花肉冷水下锅加姜片煮至八成熟，捞出放凉切薄片。热锅少油下豆瓣酱炒出红油，放蒜片与青蒜梗炒香，入肉片翻炒卷曲，最后下青蒜叶快速翻匀，淋少许生抽出锅。", instructionsEn: "See Chinese steps", nutrition: "川菜家常", nutritionEn: "Sichuan style", cuisine: "川菜"),
-        Recipe(name: "小炒黄牛肉", nameEn: "Stir-fried Beef", mealType: .lunch, ingredients: [
+        Recipe(name: "小炒黄牛肉", nameEn: "Stir-fried Beef with Chiles", mealType: .lunch, ingredients: [
             Ingredient(name: "牛肉", quantity: 180, unit: "g", category: .protein),
             Ingredient(name: "尖椒", quantity: 100, unit: "g", category: .produce),
             Ingredient(name: "豆豉", quantity: 5, unit: "g", category: .spices)
         ], instructions: "牛肉逆纹切片，加生抽、少许淀粉腌10分钟。大火热锅下油，牛肉快速滑炒至变色盛出；锅中余油下豆豉与尖椒炒香，回锅牛肉翻匀，少许盐调味。", instructionsEn: "See Chinese steps", nutrition: "湘菜风味", nutritionEn: "Hunan style", cuisine: "湘菜"),
-        Recipe(name: "紫菜蛋花汤", nameEn: "Seaweed Egg Soup", mealType: .dinner, ingredients: [
+        Recipe(name: "紫菜蛋花汤", nameEn: "Seaweed Egg Drop Soup", mealType: .dinner, ingredients: [
             Ingredient(name: "紫菜", quantity: 5, unit: "g", category: .pantry),
             Ingredient(name: "鸡蛋", quantity: 1, unit: "pcs", category: .protein),
             Ingredient(name: "香葱", quantity: 5, unit: "g", category: .spices)
@@ -391,7 +391,7 @@ struct SampleRecipes {
             Ingredient(name: "豆腐", quantity: 80, unit: "g", category: .protein),
             Ingredient(name: "醋", quantity: 10, unit: "ml", category: .spices)
         ], instructions: "木耳泡发切丝，豆腐切条。锅中加水煮开，下木耳与豆腐煮3分钟；加入酱油、白醋、白胡椒调味，淋入蛋液成蛋花，最后加香油与葱花。", instructionsEn: "See Chinese steps", nutrition: "开胃", nutritionEn: "Appetizing", cuisine: "家常"),
-        Recipe(name: "冬瓜排骨汤", nameEn: "Winter Melon Rib Soup", mealType: .dinner, ingredients: [
+        Recipe(name: "冬瓜排骨汤", nameEn: "Winter Melon Pork Rib Soup", mealType: .dinner, ingredients: [
             Ingredient(name: "排骨", quantity: 200, unit: "g", category: .protein),
             Ingredient(name: "冬瓜", quantity: 200, unit: "g", category: .produce),
             Ingredient(name: "姜", quantity: 5, unit: "g", category: .spices)
