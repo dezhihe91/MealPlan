@@ -70,10 +70,6 @@ private struct MealSectionView: View {
                     VStack(alignment: .leading, spacing: 4) {
                         Text(recipe.name)
                             .font(.subheadline)
-                        Text(recipe.instructions)
-                            .font(.footnote)
-                            .foregroundColor(.secondary)
-                            .lineLimit(2)
                     }
                 }
             }

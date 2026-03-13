@@ -1,7 +1,7 @@
 import SwiftUI
 
-struct RecipeDetailView: View {
-    let recipe: Recipe
+struct 菜谱DetailView: View {
+    let recipe: 菜谱
 
     var body: some View {
         ScrollView {
@@ -17,7 +17,7 @@ struct RecipeDetailView: View {
                 }
 
                 VStack(alignment: .leading, spacing: 8) {
-                    Text("Ingredients")
+                    Text("食材")
                         .font(.headline)
                     ForEach(recipe.ingredients) { item in
                         Text("• \(item.name) — \(item.quantity, specifier: "%.1f") \(item.unit)")
@@ -26,7 +26,7 @@ struct RecipeDetailView: View {
                 }
 
                 VStack(alignment: .leading, spacing: 8) {
-                    Text("Instructions")
+                    Text("做法")
                         .font(.headline)
                     Text(recipe.instructions)
                         .font(.body)
@@ -34,7 +34,7 @@ struct RecipeDetailView: View {
             }
             .padding()
         }
-        .navigationTitle("Recipe")
+        .navigationTitle("菜谱")
         .navigationBarTitleDisplayMode(.inline)
     }
 }

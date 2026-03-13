@@ -17,36 +17,36 @@ struct SampleRecipes {
     }
 
     private static let balanced: [Recipe] = [
-        Recipe(name: "Oatmeal + Berries", mealType: .breakfast, ingredients: [
+        Recipe(name: "燕麦莓果碗", mealType: .breakfast, ingredients: [
             Ingredient(name: "Oats", quantity: 60, unit: "g", category: .grains),
             Ingredient(name: "Milk", quantity: 200, unit: "ml", category: .dairy),
             Ingredient(name: "Blueberries", quantity: 80, unit: "g", category: .produce)
-        ], instructions: "Simmer oats with milk for 5–7 minutes until creamy, stir, then top with berries.", nutrition: "Balanced carbs & fiber"),
-        Recipe(name: "Turkey Sandwich", mealType: .lunch, ingredients: [
+        ], instructions: "燕麦加牛奶小火煮5–7分钟至浓稠，搅拌后撒上莓果。", nutrition: "Balanced carbs & fiber"),
+        Recipe(name: "火鸡三明治", mealType: .lunch, ingredients: [
             Ingredient(name: "Whole wheat bread", quantity: 2, unit: "slices", category: .grains),
             Ingredient(name: "Turkey", quantity: 100, unit: "g", category: .protein),
             Ingredient(name: "Lettuce", quantity: 40, unit: "g", category: .produce)
-        ], instructions: "Toast bread, add turkey and lettuce, season lightly, and serve with a side of greens.", nutrition: "Lean protein"),
-        Recipe(name: "Salmon + Rice", mealType: .dinner, ingredients: [
+        ], instructions: "吐司烤香，夹入火鸡和生菜，轻调味，搭配绿叶菜。", nutrition: "Lean protein"),
+        Recipe(name: "三文鱼配糙米", mealType: .dinner, ingredients: [
             Ingredient(name: "Salmon", quantity: 150, unit: "g", category: .protein),
             Ingredient(name: "Brown rice", quantity: 80, unit: "g", category: .grains),
             Ingredient(name: "Broccoli", quantity: 120, unit: "g", category: .produce)
-        ], instructions: "Season salmon and bake 12–15 min at 200°C; steam broccoli 3–4 min; serve with warm rice.", nutrition: "Omega-3 + fiber"),
-        Recipe(name: "Greek Yogurt Bowl", mealType: .breakfast, ingredients: [
+        ], instructions: "三文鱼调味后200°C烤12–15分钟；西兰花蒸3–4分钟；配热米饭。", nutrition: "Omega-3 + fiber"),
+        Recipe(name: "希腊酸奶碗", mealType: .breakfast, ingredients: [
             Ingredient(name: "Greek yogurt", quantity: 200, unit: "g", category: .dairy),
             Ingredient(name: "Banana", quantity: 1, unit: "piece", category: .produce),
             Ingredient(name: "Granola", quantity: 40, unit: "g", category: .grains)
         ], instructions: "Spoon yogurt into a bowl, add sliced fruit, then sprinkle granola on top.", nutrition: "Protein + carbs"),
-        Recipe(name: "Chicken Salad", mealType: .lunch, ingredients: [
+        Recipe(name: "鸡肉沙拉", mealType: .lunch, ingredients: [
             Ingredient(name: "Chicken breast", quantity: 120, unit: "g", category: .protein),
             Ingredient(name: "Mixed greens", quantity: 80, unit: "g", category: .produce),
             Ingredient(name: "Olive oil", quantity: 10, unit: "ml", category: .pantry)
-        ], instructions: "Grill chicken and toss with greens.", nutrition: "Light and filling"),
-        Recipe(name: "Beef Stir Fry", mealType: .dinner, ingredients: [
+        ], instructions: "鸡胸肉煎/烤熟，和蔬菜拌匀。", nutrition: "Light and filling"),
+        Recipe(name: "牛肉彩椒快炒", mealType: .dinner, ingredients: [
             Ingredient(name: "Beef", quantity: 140, unit: "g", category: .protein),
             Ingredient(name: "Bell pepper", quantity: 100, unit: "g", category: .produce),
             Ingredient(name: "Rice", quantity: 80, unit: "g", category: .grains)
-        ], instructions: "Stir fry beef and veggies. Serve with rice.", nutrition: "Iron + protein"),
+        ], instructions: "牛肉与彩椒快炒，配米饭。", nutrition: "Iron + protein"),
         Recipe(name: "番茄鸡蛋炒饭", mealType: .dinner, ingredients: [
             Ingredient(name: "米饭", quantity: 150, unit: "g", category: .grains),
             Ingredient(name: "鸡蛋", quantity: 2, unit: "pcs", category: .protein),
@@ -64,36 +64,36 @@ struct SampleRecipes {
 ]
 
     private static let pregnancy: [Recipe] = [
-        Recipe(name: "Spinach Egg Scramble", mealType: .breakfast, ingredients: [
+        Recipe(name: "菠菜炒蛋", mealType: .breakfast, ingredients: [
             Ingredient(name: "Eggs", quantity: 2, unit: "pcs", category: .protein),
             Ingredient(name: "Spinach", quantity: 60, unit: "g", category: .produce),
             Ingredient(name: "Cheese", quantity: 20, unit: "g", category: .dairy)
-        ], instructions: "Scramble eggs with spinach and cheese.", nutrition: "Folate + protein"),
-        Recipe(name: "Lentil Soup", mealType: .lunch, ingredients: [
+        ], instructions: "鸡蛋与菠菜、少量奶酪炒熟。", nutrition: "Folate + protein"),
+        Recipe(name: "扁豆汤", mealType: .lunch, ingredients: [
             Ingredient(name: "Lentils", quantity: 120, unit: "g", category: .pantry),
             Ingredient(name: "Carrots", quantity: 80, unit: "g", category: .produce),
             Ingredient(name: "Onion", quantity: 40, unit: "g", category: .produce)
-        ], instructions: "Simmer lentils with veggies.", nutrition: "Iron + fiber"),
-        Recipe(name: "Baked Cod + Sweet Potato", mealType: .dinner, ingredients: [
+        ], instructions: "扁豆与蔬菜小火炖煮。", nutrition: "Iron + fiber"),
+        Recipe(name: "烤鳕鱼配红薯", mealType: .dinner, ingredients: [
             Ingredient(name: "Cod", quantity: 150, unit: "g", category: .protein),
             Ingredient(name: "Sweet potato", quantity: 180, unit: "g", category: .produce),
             Ingredient(name: "Green beans", quantity: 100, unit: "g", category: .produce)
-        ], instructions: "Bake cod and sweet potato. Steam beans.", nutrition: "Lean protein + vitamin A"),
-        Recipe(name: "Avocado Toast", mealType: .breakfast, ingredients: [
+        ], instructions: "鳕鱼与红薯烤熟，豆角蒸熟。", nutrition: "Lean protein + vitamin A"),
+        Recipe(name: "牛油果吐司", mealType: .breakfast, ingredients: [
             Ingredient(name: "Whole wheat bread", quantity: 2, unit: "slices", category: .grains),
             Ingredient(name: "Avocado", quantity: 1, unit: "piece", category: .produce),
             Ingredient(name: "Tomato", quantity: 60, unit: "g", category: .produce)
-        ], instructions: "Mash avocado on toast, top with tomato.", nutrition: "Healthy fats"),
-        Recipe(name: "Chickpea Bowl", mealType: .lunch, ingredients: [
+        ], instructions: "牛油果压泥抹吐司，铺番茄片。", nutrition: "Healthy fats"),
+        Recipe(name: "鹰嘴豆碗", mealType: .lunch, ingredients: [
             Ingredient(name: "Chickpeas", quantity: 120, unit: "g", category: .pantry),
             Ingredient(name: "Cucumber", quantity: 80, unit: "g", category: .produce),
             Ingredient(name: "Olive oil", quantity: 10, unit: "ml", category: .pantry)
-        ], instructions: "Toss chickpeas with cucumber and olive oil.", nutrition: "Protein + fiber"),
-        Recipe(name: "Chicken + Quinoa", mealType: .dinner, ingredients: [
+        ], instructions: "鹰嘴豆与黄瓜拌橄榄油。", nutrition: "Protein + fiber"),
+        Recipe(name: "鸡胸肉配藜麦", mealType: .dinner, ingredients: [
             Ingredient(name: "Chicken breast", quantity: 140, unit: "g", category: .protein),
             Ingredient(name: "Quinoa", quantity: 70, unit: "g", category: .grains),
             Ingredient(name: "Zucchini", quantity: 100, unit: "g", category: .produce)
-        ], instructions: "Cook quinoa, grill chicken, sauté zucchini.", nutrition: "Complete protein"),
+        ], instructions: "藜麦煮熟，鸡胸肉煎/烤，西葫芦快炒。", nutrition: "Complete protein"),
         Recipe(name: "猪肝菠菜汤", mealType: .lunch, ingredients: [
             Ingredient(name: "猪肝", quantity: 120, unit: "g", category: .protein),
             Ingredient(name: "菠菜", quantity: 80, unit: "g", category: .produce),
@@ -107,36 +107,36 @@ struct SampleRecipes {
 ]
 
     private static let muscleGain: [Recipe] = [
-        Recipe(name: "Protein Oats", mealType: .breakfast, ingredients: [
+        Recipe(name: "高蛋白燕麦", mealType: .breakfast, ingredients: [
             Ingredient(name: "Oats", quantity: 80, unit: "g", category: .grains),
             Ingredient(name: "Milk", quantity: 250, unit: "ml", category: .dairy),
             Ingredient(name: "Peanut butter", quantity: 20, unit: "g", category: .pantry)
-        ], instructions: "Cook oats with milk, stir in peanut butter.", nutrition: "High protein"),
-        Recipe(name: "Chicken Burrito Bowl", mealType: .lunch, ingredients: [
+        ], instructions: "燕麦加牛奶煮至黏稠，拌入花生酱。", nutrition: "High protein"),
+        Recipe(name: "鸡肉能量碗", mealType: .lunch, ingredients: [
             Ingredient(name: "Chicken breast", quantity: 160, unit: "g", category: .protein),
             Ingredient(name: "Rice", quantity: 100, unit: "g", category: .grains),
             Ingredient(name: "Beans", quantity: 80, unit: "g", category: .pantry)
-        ], instructions: "Serve chicken over rice and beans.", nutrition: "Protein + carbs"),
-        Recipe(name: "Steak + Potatoes", mealType: .dinner, ingredients: [
+        ], instructions: "鸡肉配米饭与豆类。", nutrition: "Protein + carbs"),
+        Recipe(name: "牛排配土豆", mealType: .dinner, ingredients: [
             Ingredient(name: "Steak", quantity: 180, unit: "g", category: .protein),
             Ingredient(name: "Potatoes", quantity: 200, unit: "g", category: .produce),
             Ingredient(name: "Asparagus", quantity: 100, unit: "g", category: .produce)
-        ], instructions: "Grill steak, roast potatoes, steam asparagus.", nutrition: "High protein"),
-        Recipe(name: "Egg & Turkey Muffins", mealType: .breakfast, ingredients: [
+        ], instructions: "牛排煎/烤，土豆烤，芦笋蒸熟。", nutrition: "High protein"),
+        Recipe(name: "鸡蛋火鸡杯", mealType: .breakfast, ingredients: [
             Ingredient(name: "Eggs", quantity: 3, unit: "pcs", category: .protein),
             Ingredient(name: "Turkey", quantity: 80, unit: "g", category: .protein),
             Ingredient(name: "Spinach", quantity: 50, unit: "g", category: .produce)
-        ], instructions: "Bake egg muffins with turkey and spinach.", nutrition: "High protein"),
-        Recipe(name: "Tuna Pasta", mealType: .lunch, ingredients: [
+        ], instructions: "鸡蛋与火鸡、菠菜拌匀倒入模具烤熟。", nutrition: "High protein"),
+        Recipe(name: "金枪鱼意面", mealType: .lunch, ingredients: [
             Ingredient(name: "Tuna", quantity: 120, unit: "g", category: .protein),
             Ingredient(name: "Pasta", quantity: 90, unit: "g", category: .grains),
             Ingredient(name: "Olive oil", quantity: 10, unit: "ml", category: .pantry)
-        ], instructions: "Mix tuna with pasta and olive oil.", nutrition: "Carb support"),
-        Recipe(name: "Salmon + Couscous", mealType: .dinner, ingredients: [
+        ], instructions: "金枪鱼拌意面与橄榄油。", nutrition: "Carb support"),
+        Recipe(name: "三文鱼配库斯库斯", mealType: .dinner, ingredients: [
             Ingredient(name: "Salmon", quantity: 160, unit: "g", category: .protein),
             Ingredient(name: "Couscous", quantity: 80, unit: "g", category: .grains),
             Ingredient(name: "Broccoli", quantity: 120, unit: "g", category: .produce)
-        ], instructions: "Bake salmon, serve with couscous and broccoli.", nutrition: "Omega-3"),
+        ], instructions: "三文鱼烤熟，配库斯库斯与西兰花。", nutrition: "Omega-3"),
         Recipe(name: "鸡胸肉西兰花", mealType: .dinner, ingredients: [
             Ingredient(name: "鸡胸肉", quantity: 180, unit: "g", category: .protein),
             Ingredient(name: "西兰花", quantity: 150, unit: "g", category: .produce),
@@ -150,36 +150,36 @@ struct SampleRecipes {
 ]
 
     private static let fatLoss: [Recipe] = [
-        Recipe(name: "Greek Yogurt + Nuts", mealType: .breakfast, ingredients: [
+        Recipe(name: "希腊酸奶配坚果", mealType: .breakfast, ingredients: [
             Ingredient(name: "Greek yogurt", quantity: 180, unit: "g", category: .dairy),
             Ingredient(name: "Strawberries", quantity: 80, unit: "g", category: .produce),
             Ingredient(name: "Almonds", quantity: 15, unit: "g", category: .pantry)
-        ], instructions: "Top yogurt with berries and nuts.", nutrition: "Protein + healthy fats"),
-        Recipe(name: "Turkey Lettuce Wraps", mealType: .lunch, ingredients: [
+        ], instructions: "酸奶上放莓果与坚果。", nutrition: "Protein + healthy fats"),
+        Recipe(name: "火鸡生菜卷", mealType: .lunch, ingredients: [
             Ingredient(name: "Ground turkey", quantity: 130, unit: "g", category: .protein),
             Ingredient(name: "Lettuce", quantity: 60, unit: "g", category: .produce),
             Ingredient(name: "Bell pepper", quantity: 80, unit: "g", category: .produce)
-        ], instructions: "Cook turkey and wrap with lettuce.", nutrition: "Low carb"),
-        Recipe(name: "Shrimp + Veggies", mealType: .dinner, ingredients: [
+        ], instructions: "火鸡炒熟后用生菜包裹。", nutrition: "Low carb"),
+        Recipe(name: "虾仁炒时蔬", mealType: .dinner, ingredients: [
             Ingredient(name: "Shrimp", quantity: 150, unit: "g", category: .protein),
             Ingredient(name: "Zucchini", quantity: 100, unit: "g", category: .produce),
             Ingredient(name: "Mushrooms", quantity: 80, unit: "g", category: .produce)
-        ], instructions: "Sauté shrimp with vegetables.", nutrition: "Low calorie"),
-        Recipe(name: "Egg White Omelet", mealType: .breakfast, ingredients: [
+        ], instructions: "虾仁与蔬菜快炒。", nutrition: "Low calorie"),
+        Recipe(name: "蛋白煎蛋卷", mealType: .breakfast, ingredients: [
             Ingredient(name: "Egg whites", quantity: 150, unit: "ml", category: .protein),
             Ingredient(name: "Spinach", quantity: 50, unit: "g", category: .produce),
             Ingredient(name: "Tomato", quantity: 60, unit: "g", category: .produce)
-        ], instructions: "Cook egg whites with vegetables.", nutrition: "Lean protein"),
-        Recipe(name: "Chicken Veg Bowl", mealType: .lunch, ingredients: [
+        ], instructions: "蛋白与蔬菜煎熟。", nutrition: "Lean protein"),
+        Recipe(name: "鸡肉蔬菜碗", mealType: .lunch, ingredients: [
             Ingredient(name: "Chicken breast", quantity: 130, unit: "g", category: .protein),
             Ingredient(name: "Cauliflower rice", quantity: 150, unit: "g", category: .produce),
             Ingredient(name: "Cucumber", quantity: 60, unit: "g", category: .produce)
-        ], instructions: "Serve chicken over cauliflower rice.", nutrition: "Low carb"),
-        Recipe(name: "Cod + Greens", mealType: .dinner, ingredients: [
+        ], instructions: "鸡肉配花椰菜米。", nutrition: "Low carb"),
+        Recipe(name: "鳕鱼配时蔬", mealType: .dinner, ingredients: [
             Ingredient(name: "Cod", quantity: 150, unit: "g", category: .protein),
             Ingredient(name: "Asparagus", quantity: 120, unit: "g", category: .produce),
             Ingredient(name: "Lemon", quantity: 0.5, unit: "piece", category: .produce)
-        ], instructions: "Bake cod with lemon and asparagus.", nutrition: "Lean protein"),
+        ], instructions: "鳕鱼烤熟，搭配柠檬与芦笋。", nutrition: "Lean protein"),
         Recipe(name: "冬瓜虾仁", mealType: .dinner, ingredients: [
             Ingredient(name: "冬瓜", quantity: 200, unit: "g", category: .produce),
             Ingredient(name: "虾仁", quantity: 150, unit: "g", category: .protein),
@@ -193,36 +193,36 @@ struct SampleRecipes {
 ]
 
     private static let mediterranean: [Recipe] = [
-        Recipe(name: "Greek Yogurt + Honey", mealType: .breakfast, ingredients: [
+        Recipe(name: "希腊酸奶配蜂蜜", mealType: .breakfast, ingredients: [
             Ingredient(name: "Greek yogurt", quantity: 200, unit: "g", category: .dairy),
             Ingredient(name: "Honey", quantity: 10, unit: "g", category: .pantry),
             Ingredient(name: "Walnuts", quantity: 15, unit: "g", category: .pantry)
-        ], instructions: "Top yogurt with honey and walnuts.", nutrition: "Healthy fats"),
-        Recipe(name: "Mediterranean Salad", mealType: .lunch, ingredients: [
+        ], instructions: "酸奶加蜂蜜和核桃。", nutrition: "Healthy fats"),
+        Recipe(name: "地中海沙拉", mealType: .lunch, ingredients: [
             Ingredient(name: "Tomato", quantity: 100, unit: "g", category: .produce),
             Ingredient(name: "Cucumber", quantity: 80, unit: "g", category: .produce),
             Ingredient(name: "Feta", quantity: 40, unit: "g", category: .dairy)
-        ], instructions: "Toss veggies with feta and olive oil.", nutrition: "Fresh & light"),
-        Recipe(name: "Olive Oil Fish + Quinoa", mealType: .dinner, ingredients: [
+        ], instructions: "蔬菜拌菲达和橄榄油。", nutrition: "Fresh & light"),
+        Recipe(name: "橄榄油白鱼配藜麦", mealType: .dinner, ingredients: [
             Ingredient(name: "White fish", quantity: 150, unit: "g", category: .protein),
             Ingredient(name: "Quinoa", quantity: 70, unit: "g", category: .grains),
             Ingredient(name: "Olive oil", quantity: 10, unit: "ml", category: .pantry)
-        ], instructions: "Bake fish with olive oil. Serve with quinoa.", nutrition: "Mediterranean"),
-        Recipe(name: "Avocado Toast", mealType: .breakfast, ingredients: [
+        ], instructions: "白鱼抹橄榄油烤熟，配藜麦。", nutrition: "Mediterranean"),
+        Recipe(name: "牛油果吐司", mealType: .breakfast, ingredients: [
             Ingredient(name: "Whole wheat bread", quantity: 2, unit: "slices", category: .grains),
             Ingredient(name: "Avocado", quantity: 1, unit: "piece", category: .produce),
             Ingredient(name: "Olive oil", quantity: 5, unit: "ml", category: .pantry)
-        ], instructions: "Toast bread, top with avocado and olive oil.", nutrition: "Healthy fats"),
-        Recipe(name: "Chickpea Salad", mealType: .lunch, ingredients: [
+        ], instructions: "吐司抹牛油果，淋橄榄油。", nutrition: "Healthy fats"),
+        Recipe(name: "鹰嘴豆沙拉", mealType: .lunch, ingredients: [
             Ingredient(name: "Chickpeas", quantity: 120, unit: "g", category: .pantry),
             Ingredient(name: "Red onion", quantity: 30, unit: "g", category: .produce),
             Ingredient(name: "Olive oil", quantity: 10, unit: "ml", category: .pantry)
-        ], instructions: "Mix chickpeas, onion, olive oil.", nutrition: "Fiber-rich"),
-        Recipe(name: "Chicken + Veggies", mealType: .dinner, ingredients: [
+        ], instructions: "鹰嘴豆与洋葱、橄榄油拌匀。", nutrition: "Fiber-rich"),
+        Recipe(name: "鸡肉炒蔬菜", mealType: .dinner, ingredients: [
             Ingredient(name: "Chicken breast", quantity: 150, unit: "g", category: .protein),
             Ingredient(name: "Zucchini", quantity: 100, unit: "g", category: .produce),
             Ingredient(name: "Bell pepper", quantity: 80, unit: "g", category: .produce)
-        ], instructions: "Sauté chicken with veggies.", nutrition: "Lean protein"),
+        ], instructions: "鸡肉与蔬菜快炒。", nutrition: "Lean protein"),
         Recipe(name: "橄榄油蒜蓉虾", mealType: .dinner, ingredients: [
             Ingredient(name: "虾仁", quantity: 160, unit: "g", category: .protein),
             Ingredient(name: "橄榄油", quantity: 10, unit: "ml", category: .pantry),
