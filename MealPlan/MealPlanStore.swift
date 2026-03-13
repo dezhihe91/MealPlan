@@ -11,8 +11,18 @@ final class MealPlanStore: ObservableObject {
     @Published var selectedTemplate: MealTemplate = .balanced
     @Published var groceryDays: Set<Weekday> = [.sunday]
     @Published var nutritionGoals = NutritionGoals()
+    @Published var customRecipes: [Recipe] = []
+    @Published var candidateIds: Set<UUID> = []
     @Published private(set) var currentPlan: WeeklyPlan? = nil
     private var lastPlan: WeeklyPlan? = nil
+
+    var allRecipes: [Recipe] {
+        SampleRecipes.recipes(for: selectedTemplate) + customRecipes
+    }
+
+    func addCustomRecipe(_ recipe: Recipe) {
+        customRecipes.insert(recipe, at: 0)
+    }
 
     func generatePlan(repeatLastWeek: Bool = false) {
         if repeatLastWeek, let lastPlan {
@@ -21,7 +31,7 @@ final class MealPlanStore: ObservableObject {
         }
 
         let start = Calendar.current.startOfDay(for: Date())
-        let recipes = SampleRecipes.recipes(for: selectedTemplate)
+        let recipes = candidatePool()
         let dayPlans = (0..<7).compactMap { offset -> DayPlan? in
             guard let date = Calendar.current.date(byAdding: .day, value: offset, to: start) else { return nil }
             var meals: [MealType: [Recipe]] = [:]
@@ -43,7 +53,6 @@ final class MealPlanStore: ObservableObject {
         guard !sortedDays.isEmpty else { return [] }
 
         let calendar = Calendar.current
-        let weekDates = plan.days.map { $0.date }
 
         var tripItems: [Weekday: [Ingredient]] = [:]
         for day in sortedDays { tripItems[day] = [] }

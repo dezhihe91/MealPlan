@@ -37,7 +37,7 @@ struct WeeklyPlanView: View {
                                                     Text(mealType.title(for: store.language))
                                                         .font(.subheadline)
                                                         .foregroundColor(.secondary)
-                                                        .frame(width: 44, alignment: .leading)
+                                                        .frame(width: store.language == .chinese ? 48 : 44, alignment: .leading)
                                                     Text(recipe.displayName(for: store.language))
                                                         .font(.subheadline)
                                                 }
@@ -77,5 +77,4 @@ struct WeeklyPlanView: View {
     private func toggleLanguage() {
         store.language = store.language == .chinese ? .english : .chinese
     }
-}
 }

@@ -13,6 +13,10 @@ struct ContentView: View {
                 .tabItem {
                     Label(store.language == .chinese ? "买菜" : "Groceries", systemImage: "cart")
                 }
+            RecipeLibraryView()
+                .tabItem {
+                    Label(store.language == .chinese ? "菜谱库" : "Library", systemImage: "book")
+                }
             SettingsView()
                 .tabItem {
                     Label(store.language == .chinese ? "设置" : "Settings", systemImage: "slider.horizontal.3")
