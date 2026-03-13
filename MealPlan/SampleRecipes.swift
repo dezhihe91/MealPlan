@@ -20,6 +20,11 @@ struct SampleRecipes {
         }
     }
 
+
+    static func allRecipes() -> [Recipe] {
+        balanced + pregnancy + muscleGain + fatLoss + mediterranean + chinese
+    }
+
     private static let balanced: [Recipe] = [
         Recipe(name: "燕麦莓果碗", mealType: .breakfast, ingredients: [
             Ingredient(name: "盐", quantity: 1, unit: "g", category: .spices),

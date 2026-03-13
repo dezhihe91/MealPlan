@@ -25,7 +25,7 @@ final class MealPlanStore: ObservableObject {
     private var lastPlan: WeeklyPlan? = nil
 
     var allRecipes: [Recipe] {
-        SampleRecipes.recipes(for: selectedTemplate) + customRecipes
+        SampleRecipes.allRecipes() + customRecipes
     }
 
     func addCustomRecipe(_ recipe: Recipe) {
