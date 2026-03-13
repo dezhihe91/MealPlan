@@ -74,22 +74,29 @@ struct WeeklyPlanView: View {
                                     if let recipes = day.meals[mealType] {
                                         let summaryLabel = mealSummaryLabel(for: recipes)
                                         let countLabel = store.language == .chinese ? "\(recipes.count) 道" : "\(recipes.count) dishes"
-                                        NavigationLink(destination: MealDetailView(mealType: mealType, recipes: recipes)) {
-                                            VStack(alignment: .leading, spacing: 4) {
-                                                HStack {
-                                                    Text(mealType.title(for: store.language))
+                                        HStack(alignment: .top) {
+                                            NavigationLink(destination: MealDetailView(mealType: mealType, recipes: recipes)) {
+                                                VStack(alignment: .leading, spacing: 4) {
+                                                    HStack {
+                                                        Text(mealType.title(for: store.language))
+                                                            .font(.subheadline)
+                                                        Spacer()
+                                                        Text(countLabel)
+                                                            .font(.subheadline)
+                                                            .foregroundColor(.secondary)
+                                                    }
+                                                    Text(recipes.map { $0.displayName(for: store.language) }.joined(separator: "、"))
                                                         .font(.subheadline)
-                                                    Spacer()
-                                                    Text(countLabel)
-                                                        .font(.subheadline)
+                                                    Text(summaryLabel)
+                                                        .font(.footnote)
                                                         .foregroundColor(.secondary)
                                                 }
-                                                Text(recipes.map { $0.displayName(for: store.language) }.joined(separator: "、"))
-                                                    .font(.subheadline)
-                                                Text(summaryLabel)
-                                                    .font(.footnote)
-                                                    .foregroundColor(.secondary)
                                             }
+                                            Button(action: { store.regenerateMeal(dayId: day.id, mealType: mealType) }) {
+                                                Image(systemName: "arrow.clockwise")
+                                                    .foregroundColor(.accentColor)
+                                            }
+                                            .buttonStyle(.plain)
                                         }
                                     }
                                 }

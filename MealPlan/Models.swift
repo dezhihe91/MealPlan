@@ -209,7 +209,7 @@ enum MealTemplate: String, CaseIterable, Identifiable {
 struct DayPlan: Identifiable {
     let id = UUID()
     let date: Date
-    let meals: [MealType: [Recipe]]
+    var meals: [MealType: [Recipe]]
 }
 
 struct WeeklyPlan {

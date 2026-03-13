@@ -8,14 +8,28 @@ final class MealPlanStore: ObservableObject {
         set { languageRaw = newValue.rawValue }
     }
 
+    @AppStorage("mealplan.likedIds") private var likedIdsStorage: String = ""
+
     @Published var selectedTemplate: MealTemplate = .balanced
     @Published var groceryDays: Set<Weekday> = [.sunday]
     @Published var nutritionGoals = NutritionGoals()
     @Published var customRecipes: [Recipe] = []
     @Published var candidateIds: Set<UUID> = []
+    @Published var likedIds: Set<UUID> = [] {
+        didSet {
+            likedIdsStorage = likedIds.map { $0.uuidString }.joined(separator: ",")
+        }
+    }
 
     @AppStorage("mealplan.reminderEnabled") var reminderEnabled: Bool = false
     @AppStorage("mealplan.reminderTime") private var reminderTimeInterval: Double = Date().timeIntervalSince1970
+
+    init() {
+        let stored = likedIdsStorage
+            .split(separator: ",")
+            .compactMap { UUID(uuidString: String($0)) }
+        likedIds = Set(stored)
+    }
 
     var reminderTime: Date {
         get { Date(timeIntervalSince1970: reminderTimeInterval) }
@@ -93,6 +107,35 @@ final class MealPlanStore: ObservableObject {
         let plan = WeeklyPlan(startDate: start, days: dayPlans)
         lastPlan = currentPlan
         currentPlan = plan
+    }
+
+    func regenerateMeal(dayId: UUID, mealType: MealType) {
+        guard var plan = currentPlan else { return }
+        let recipes = candidatePool().filter { $0.mealType == mealType }
+        guard !recipes.isEmpty else { return }
+        var pool = recipes.shuffled()
+        var soupPool = recipes.filter { $0.isSoup }.shuffled()
+        var mainPool = recipes.filter { !$0.isSoup }.shuffled()
+        var poolIndex = 0
+        var soupIndex = 0
+        var mainIndex = 0
+
+        let newMeals = pickRecipesRandom(
+            pool: &pool,
+            poolIndex: &poolIndex,
+            soupPool: &soupPool,
+            soupIndex: &soupIndex,
+            mainPool: &mainPool,
+            mainIndex: &mainIndex
+        )
+
+        if let idx = plan.days.firstIndex(where: { $0.id == dayId }) {
+            var day = plan.days[idx]
+            day.meals[mealType] = newMeals
+            var updatedDays = plan.days
+            updatedDays[idx] = day
+            currentPlan = WeeklyPlan(startDate: plan.startDate, days: updatedDays)
+        }
     }
 
     func groceryTrips(for plan: WeeklyPlan) -> [GroceryTrip] {
