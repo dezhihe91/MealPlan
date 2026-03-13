@@ -76,7 +76,7 @@ struct SampleRecipes {
             Ingredient(name: "食用油", quantity: 8, unit: "ml", category: .pantry)
         ], instructions: "蒜末少油小火爆香；下西兰花大火快炒至断生；加少许盐和胡椒，关火出锅。", nutrition: "高纤维"),
         Recipe(name: "小米南瓜粥", mealType: .breakfast, ingredients: [
-            Ingredient(name: "盐", quantity: 1, unit: "g", category: .spices, isSoup: true),
+            Ingredient(name: "盐", quantity: 1, unit: "g", category: .spices),
             Ingredient(name: "食用油", quantity: 5, unit: "ml", category: .pantry),
             Ingredient(name: "小米", quantity: 60, unit: "g", category: .grains),
             Ingredient(name: "南瓜", quantity: 100, unit: "g", category: .produce)
@@ -92,7 +92,7 @@ struct SampleRecipes {
             Ingredient(name: "Cheese", quantity: 20, unit: "g", category: .dairy)
         ], instructions: "鸡蛋打散；菠菜焯水挤干；锅中少油炒蛋，加入菠菜与少量奶酪拌匀。", nutrition: "Folate + protein"),
         Recipe(name: "扁豆汤", mealType: .lunch, ingredients: [
-            Ingredient(name: "盐", quantity: 1, unit: "g", category: .spices, isSoup: true),
+            Ingredient(name: "盐", quantity: 1, unit: "g", category: .spices),
             Ingredient(name: "食用油", quantity: 5, unit: "ml", category: .pantry),
             Ingredient(name: "Lentils", quantity: 120, unit: "g", category: .pantry),
             Ingredient(name: "Carrots", quantity: 80, unit: "g", category: .produce),
@@ -134,7 +134,7 @@ struct SampleRecipes {
             Ingredient(name: "姜", quantity: 5, unit: "g", category: .spices)
         ], instructions: "猪肝切片加料酒抓匀，沸水焯10秒捞出；另起水加姜片煮开，下猪肝与菠菜，沸后调盐和少许胡椒。", nutrition: "补铁"),
         Recipe(name: "红枣枸杞燕麦粥", mealType: .breakfast, ingredients: [
-            Ingredient(name: "盐", quantity: 1, unit: "g", category: .spices, isSoup: true),
+            Ingredient(name: "盐", quantity: 1, unit: "g", category: .spices),
             Ingredient(name: "食用油", quantity: 5, unit: "ml", category: .pantry),
             Ingredient(name: "燕麦", quantity: 60, unit: "g", category: .grains),
             Ingredient(name: "红枣", quantity: 6, unit: "pcs", category: .produce),
@@ -318,7 +318,6 @@ struct SampleRecipes {
             Ingredient(name: "洋葱", quantity: 50, unit: "g", category: .produce)
         ], instructions: "洋葱炒软出香，加入番茄炒出汁，倒入鹰嘴豆小火炖10分钟，调盐。", nutrition: "高纤维"),
 ]
-}
 
     private static let chinese: [Recipe] = [
         Recipe(name: "宫保鸡丁", nameEn: "Kung Pao Chicken", mealType: .lunch, ingredients: [
@@ -342,17 +341,17 @@ struct SampleRecipes {
             Ingredient(name: "豆豉", quantity: 5, unit: "g", category: .spices)
         ], instructions: "牛肉切片腌制；热锅大火快炒牛肉至变色，加入尖椒与豆豉炒香。", instructionsEn: "See Chinese steps", nutrition: "湘菜风味", nutritionEn: "Hunan style", prepMinutes: 10, cookMinutes: 8, cuisine: "湘菜"),
         Recipe(name: "紫菜蛋花汤", nameEn: "Seaweed Egg Soup", mealType: .dinner, ingredients: [
-            Ingredient(name: "紫菜", quantity: 5, unit: "g", category: .pantry, isSoup: true),
+            Ingredient(name: "紫菜", quantity: 5, unit: "g", category: .pantry),
             Ingredient(name: "鸡蛋", quantity: 1, unit: "pcs", category: .protein),
             Ingredient(name: "香葱", quantity: 5, unit: "g", category: .spices)
         ], instructions: "水开下紫菜；鸡蛋打散淋入成蛋花，加盐和葱花。", instructionsEn: "See Chinese steps", nutrition: "清淡汤品", nutritionEn: "Light soup", prepMinutes: 5, cookMinutes: 5, isSoup: true, cuisine: "家常"),
         Recipe(name: "酸辣汤", nameEn: "Hot and Sour Soup", mealType: .lunch, ingredients: [
-            Ingredient(name: "木耳", quantity: 10, unit: "g", category: .produce, isSoup: true),
+            Ingredient(name: "木耳", quantity: 10, unit: "g", category: .produce),
             Ingredient(name: "豆腐", quantity: 80, unit: "g", category: .protein),
             Ingredient(name: "醋", quantity: 10, unit: "ml", category: .spices)
         ], instructions: "木耳泡发切丝；汤底加醋胡椒，放豆腐木耳煮3分钟，淋蛋花。", instructionsEn: "See Chinese steps", nutrition: "开胃", nutritionEn: "Appetizing", prepMinutes: 8, cookMinutes: 6, isSoup: true, cuisine: "家常"),
         Recipe(name: "冬瓜排骨汤", nameEn: "Winter Melon Rib Soup", mealType: .dinner, ingredients: [
-            Ingredient(name: "排骨", quantity: 200, unit: "g", category: .protein, isSoup: true),
+            Ingredient(name: "排骨", quantity: 200, unit: "g", category: .protein),
             Ingredient(name: "冬瓜", quantity: 200, unit: "g", category: .produce),
             Ingredient(name: "姜", quantity: 5, unit: "g", category: .spices)
         ], instructions: "排骨焯水后加姜片炖20分钟；加入冬瓜再煮10分钟调味。", instructionsEn: "See Chinese steps", nutrition: "清润", nutritionEn: "Light broth", prepMinutes: 10, cookMinutes: 30, isSoup: true, cuisine: "家常"),
@@ -362,3 +361,4 @@ struct SampleRecipes {
             Ingredient(name: "葱", quantity: 5, unit: "g", category: .spices)
         ], instructions: "鸡蛋炒散盛出；番茄炒出汁回锅鸡蛋，撒葱花。", instructionsEn: "See Chinese steps", nutrition: "家常", nutritionEn: "Home-style", prepMinutes: 8, cookMinutes: 6, cuisine: "家常")
     ]
+}
