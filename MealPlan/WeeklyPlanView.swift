@@ -13,6 +13,28 @@ struct WeeklyPlanView: View {
                 }
                 .pickerStyle(.menu)
 
+                VStack(alignment: .leading, spacing: 8) {
+                    Text(store.language == .chinese ? "买菜日" : "Grocery Days")
+                        .font(.subheadline)
+                    HStack {
+                        ForEach(Weekday.allCases) { day in
+                            Button(action: {
+                                if store.groceryDays.contains(day) {
+                                    store.groceryDays.remove(day)
+                                } else {
+                                    store.groceryDays.insert(day)
+                                }
+                            }) {
+                                Text(day.title(for: store.language))
+                                    .font(.caption)
+                                    .padding(.vertical, 6)
+                                    .padding(.horizontal, 8)
+                                    .background(store.groceryDays.contains(day) ? Color.accentColor.opacity(0.2) : Color.gray.opacity(0.15))
+                                    .cornerRadius(8)
+                            }
+                        }
+                    }
+                }
                 HStack(spacing: 12) {
                     Button(store.language == .chinese ? "生成计划" : "Generate Plan") {
                         store.generatePlan()
@@ -80,10 +102,14 @@ struct WeeklyPlanView: View {
     }
 
     private func mealSummaryLabel(for recipes: [Recipe]) -> String {
-        let calories = recipes.compactMap { $0.calories }.reduce(0, +)
-        let protein = recipes.compactMap { $0.protein }.reduce(0, +)
-        let carbs = recipes.compactMap { $0.carbs }.reduce(0, +)
-        let fat = recipes.compactMap { $0.fat }.reduce(0, +)
+        let totals = recipes.reduce((0,0,0,0)) { acc, item in
+            let n = item.estimatedNutrition()
+            return (acc.0 + n.calories, acc.1 + n.protein, acc.2 + n.carbs, acc.3 + n.fat)
+        }
+        let calories = totals.0
+        let protein = totals.1
+        let carbs = totals.2
+        let fat = totals.3
         if store.language == .chinese {
             return "约 \(calories) 千卡 · 蛋白 \(protein)g · 碳水 \(carbs)g · 脂肪 \(fat)g"
         }

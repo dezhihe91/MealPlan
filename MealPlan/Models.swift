@@ -150,6 +150,7 @@ enum MealTemplate: String, CaseIterable, Identifiable {
     case fatLoss
     case mediterranean
     case chinese
+    case custom
 
     var id: String { rawValue }
     func title(for language: AppLanguage) -> String {
@@ -160,12 +161,14 @@ enum MealTemplate: String, CaseIterable, Identifiable {
         case (.fatLoss, .chinese): return "减脂控卡"
         case (.mediterranean, .chinese): return "地中海"
         case (.chinese, .chinese): return "中餐经典"
+        case (.custom, .chinese): return "自定义"
         case (.balanced, .english): return "Balanced"
         case (.pregnancy, .english): return "Pregnancy"
         case (.muscleGain, .english): return "Muscle Gain"
         case (.fatLoss, .english): return "Fat Loss"
         case (.mediterranean, .english): return "Mediterranean"
         case (.chinese, .english): return "Chinese"
+        case (.custom, .english): return "Custom"
         }
     }
 }
@@ -222,4 +225,39 @@ struct NutritionGoals {
     var protein: Int = 0
     var carbs: Int = 0
     var fat: Int = 0
+}
+
+extension Ingredient {
+    func estimatedMacros() -> (calories: Double, protein: Double, carbs: Double, fat: Double) {
+        if let calories, let protein, let carbs, let fat {
+            return (calories, protein, carbs, fat)
+        }
+        // crude estimates per 100g based on category
+        let grams = unit == "g" ? quantity : (unit == "ml" ? quantity : 0)
+        let factor = grams / 100.0
+        switch category {
+        case .protein:
+            return (165 * factor, 31 * factor, 0 * factor, 4 * factor)
+        case .produce:
+            return (40 * factor, 1 * factor, 9 * factor, 0.2 * factor)
+        case .grains:
+            return (360 * factor, 10 * factor, 75 * factor, 2 * factor)
+        case .dairy:
+            return (60 * factor, 3 * factor, 5 * factor, 3 * factor)
+        case .pantry:
+            return (200 * factor, 5 * factor, 20 * factor, 10 * factor)
+        case .spices, .other:
+            return (5 * factor, 0 * factor, 1 * factor, 0 * factor)
+        }
+    }
+}
+
+extension Recipe {
+    func estimatedNutrition() -> (calories: Int, protein: Int, carbs: Int, fat: Int) {
+        let totals = ingredients.reduce((0.0, 0.0, 0.0, 0.0)) { acc, item in
+            let m = item.estimatedMacros()
+            return (acc.0 + m.calories, acc.1 + m.protein, acc.2 + m.carbs, acc.3 + m.fat)
+        }
+        return (Int(totals.0.rounded()), Int(totals.1.rounded()), Int(totals.2.rounded()), Int(totals.3.rounded()))
+    }
 }

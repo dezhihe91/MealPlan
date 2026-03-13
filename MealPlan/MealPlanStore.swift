@@ -95,8 +95,13 @@ final class MealPlanStore: ObservableObject {
     }
 
     private func candidatePool() -> [Recipe] {
+        let library = allRecipes
+        if selectedTemplate == .custom {
+            let pool = library.filter { candidateIds.contains($0.id) }
+            return pool
+        }
         if !candidateIds.isEmpty {
-            let pool = allRecipes.filter { candidateIds.contains($0.id) }
+            let pool = library.filter { candidateIds.contains($0.id) }
             if !pool.isEmpty { return pool }
         }
         return SampleRecipes.recipes(for: selectedTemplate) + customRecipes
