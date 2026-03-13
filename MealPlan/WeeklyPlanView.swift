@@ -31,11 +31,17 @@ struct WeeklyPlanView: View {
                             Section(header: Text(day.date.formatted(date: .abbreviated, time: .omitted))) {
                                 ForEach(MealType.allCases) { mealType in
                                     if let recipes = day.meals[mealType] {
+                                        let summaryLabel = mealSummaryLabel(for: recipes)
                                         let countLabel = store.language == .chinese ? "\(recipes.count) 道" : "\(recipes.count) dishes"
                                         NavigationLink(destination: MealDetailView(mealType: mealType, recipes: recipes)) {
                                             HStack {
-                                                Text(mealType.title(for: store.language))
-                                                    .font(.subheadline)
+                                                VStack(alignment: .leading, spacing: 4) {
+                                                    Text(mealType.title(for: store.language))
+                                                        .font(.subheadline)
+                                                    Text(summaryLabel)
+                                                        .font(.footnote)
+                                                        .foregroundColor(.secondary)
+                                                }
                                                 Spacer()
                                                 Text(countLabel)
                                                     .font(.subheadline)

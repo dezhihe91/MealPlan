@@ -73,6 +73,10 @@ struct Recipe: Identifiable {
     let instructionsEn: String?
     let nutrition: String?
     let nutritionEn: String?
+    let calories: Int?
+    let protein: Int?
+    let carbs: Int?
+    let fat: Int?
     let prepMinutes: Int?
     let cookMinutes: Int?
     let isSoup: Bool
@@ -87,6 +91,10 @@ struct Recipe: Identifiable {
         instructionsEn: String? = nil,
         nutrition: String? = nil,
         nutritionEn: String? = nil,
+        calories: Int? = nil,
+        protein: Int? = nil,
+        carbs: Int? = nil,
+        fat: Int? = nil,
         prepMinutes: Int? = nil,
         cookMinutes: Int? = nil,
         isSoup: Bool = false,
@@ -100,6 +108,10 @@ struct Recipe: Identifiable {
         self.instructionsEn = instructionsEn
         self.nutrition = nutrition
         self.nutritionEn = nutritionEn
+        self.calories = calories
+        self.protein = protein
+        self.carbs = carbs
+        self.fat = fat
         self.prepMinutes = prepMinutes
         self.cookMinutes = cookMinutes
         self.isSoup = isSoup
