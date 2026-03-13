@@ -13,6 +13,14 @@ final class MealPlanStore: ObservableObject {
     @Published var nutritionGoals = NutritionGoals()
     @Published var customRecipes: [Recipe] = []
     @Published var candidateIds: Set<UUID> = []
+
+    @AppStorage("mealplan.reminderEnabled") var reminderEnabled: Bool = false
+    @AppStorage("mealplan.reminderTime") private var reminderTimeInterval: Double = Date().timeIntervalSince1970
+
+    var reminderTime: Date {
+        get { Date(timeIntervalSince1970: reminderTimeInterval) }
+        set { reminderTimeInterval = newValue.timeIntervalSince1970 }
+    }
     @Published private(set) var currentPlan: WeeklyPlan? = nil
     private var lastPlan: WeeklyPlan? = nil
 

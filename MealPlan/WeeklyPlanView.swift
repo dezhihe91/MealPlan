@@ -6,12 +6,22 @@ struct WeeklyPlanView: View {
     var body: some View {
         NavigationStack {
             VStack(spacing: 16) {
-                Picker(store.language == .chinese ? "模板" : "Template", selection: $store.selectedTemplate) {
-                    ForEach(MealTemplate.allCases) { template in
-                        Text(template.title(for: store.language)).tag(template)
+                VStack(alignment: .leading, spacing: 8) {
+                    Text(store.language == .chinese ? "模板" : "Template")
+                        .font(.subheadline)
+                    HStack {
+                        ForEach(MealTemplate.allCases) { template in
+                            Button(action: { store.selectedTemplate = template }) {
+                                Text(template.title(for: store.language))
+                                    .font(.caption)
+                                    .padding(.vertical, 6)
+                                    .padding(.horizontal, 8)
+                                    .background(store.selectedTemplate == template ? Color.accentColor.opacity(0.2) : Color.gray.opacity(0.15))
+                                    .cornerRadius(8)
+                            }
+                        }
                     }
                 }
-                .pickerStyle(.menu)
 
                 VStack(alignment: .leading, spacing: 8) {
                     Text(store.language == .chinese ? "买菜日" : "Grocery Days")
