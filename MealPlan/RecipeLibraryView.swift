@@ -24,6 +24,16 @@ struct RecipeLibraryView: View {
         if filterLikedOnly {
             list = list.filter { store.likedIds.contains($0.id) }
         }
+        if filterCustomOnly {
+            list = list.filter { recipe in
+                store.customRecipes.contains(where: { $0.id == recipe.id })
+            }
+        }
+        if filterSystemOnly {
+            list = list.filter { recipe in
+                !store.customRecipes.contains(where: { $0.id == recipe.id })
+            }
+        }
         if let meal = filterMeal {
             list = list.filter { $0.mealType == meal }
         }
@@ -46,6 +56,8 @@ struct RecipeLibraryView: View {
     @State private var filterSoupOnly: Bool = false
     @State private var filterCandidatesOnly: Bool = false
     @State private var filterLikedOnly: Bool = false
+    @State private var filterCustomOnly: Bool = false
+    @State private var filterSystemOnly: Bool = false
 
     var body: some View {
         NavigationStack {
@@ -66,14 +78,17 @@ struct RecipeLibraryView: View {
                     Toggle(store.language == .chinese ? "只看汤品" : "Soup only", isOn: $filterSoupOnly)
                     Toggle(store.language == .chinese ? "只看候选" : "Candidates only", isOn: $filterCandidatesOnly)
                     Toggle(store.language == .chinese ? "只看喜欢" : "Liked only", isOn: $filterLikedOnly)
+                    Toggle(store.language == .chinese ? "只看自定义" : "Custom only", isOn: $filterCustomOnly)
+                    Toggle(store.language == .chinese ? "只看系统" : "System only", isOn: $filterSystemOnly)
                 }
 
                 Section(header: Text(store.language == .chinese ? "候选菜谱" : "Candidate Pool")) {
-                    if store.candidateIds.isEmpty {
+                    let candidateRecipes = filteredRecipes.filter { store.candidateIds.contains($0.id) }
+                    if candidateRecipes.isEmpty {
                         Text(store.language == .chinese ? "未选择候选菜谱" : "No candidates selected")
                             .foregroundColor(.secondary)
                     } else {
-                        ForEach(store.allRecipes.filter { store.candidateIds.contains($0.id) }) { recipe in
+                        ForEach(candidateRecipes) { recipe in
                             NavigationLink(destination: RecipeDetailView(recipe: recipe)) {
                                 Text(recipe.displayName(for: store.language))
                             }
