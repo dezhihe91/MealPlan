@@ -61,6 +61,30 @@ struct Ingredient: Hashable, Identifiable {
     let quantity: Double
     let unit: String
     let category: IngredientCategory
+    let calories: Double?
+    let protein: Double?
+    let carbs: Double?
+    let fat: Double?
+
+    init(
+        name: String,
+        quantity: Double,
+        unit: String,
+        category: IngredientCategory,
+        calories: Double? = nil,
+        protein: Double? = nil,
+        carbs: Double? = nil,
+        fat: Double? = nil
+    ) {
+        self.name = name
+        self.quantity = quantity
+        self.unit = unit
+        self.category = category
+        self.calories = calories
+        self.protein = protein
+        self.carbs = carbs
+        self.fat = fat
+    }
 }
 
 struct Recipe: Identifiable {

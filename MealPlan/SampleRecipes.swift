@@ -15,6 +15,8 @@ struct SampleRecipes {
             return mediterranean
         case .chinese:
             return chinese
+        case .custom:
+            return []
         }
     }
 
