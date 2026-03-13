@@ -47,6 +47,8 @@ struct Recipe: Identifiable {
     let ingredients: [Ingredient]
     let instructions: String
     let nutrition: String?
+    let prepMinutes: Int?
+    let cookMinutes: Int?
 }
 
 enum MealTemplate: String, CaseIterable, Identifiable {
