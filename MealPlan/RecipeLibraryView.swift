@@ -21,6 +21,9 @@ struct RecipeLibraryView: View {
         if filterCandidatesOnly {
             list = list.filter { store.candidateIds.contains($0.id) }
         }
+        if filterLikedOnly {
+            list = list.filter { store.likedIds.contains($0.id) }
+        }
         if let meal = filterMeal {
             list = list.filter { $0.mealType == meal }
         }
@@ -42,6 +45,7 @@ struct RecipeLibraryView: View {
     @State private var filterCuisine: String = ""
     @State private var filterSoupOnly: Bool = false
     @State private var filterCandidatesOnly: Bool = false
+    @State private var filterLikedOnly: Bool = false
 
     var body: some View {
         NavigationStack {
@@ -61,6 +65,7 @@ struct RecipeLibraryView: View {
                     }
                     Toggle(store.language == .chinese ? "只看汤品" : "Soup only", isOn: $filterSoupOnly)
                     Toggle(store.language == .chinese ? "只看候选" : "Candidates only", isOn: $filterCandidatesOnly)
+                    Toggle(store.language == .chinese ? "只看喜欢" : "Liked only", isOn: $filterLikedOnly)
                 }
 
                 Section(header: Text(store.language == .chinese ? "候选菜谱" : "Candidate Pool")) {
@@ -83,6 +88,17 @@ struct RecipeLibraryView: View {
                                 Text(recipe.displayName(for: store.language))
                             }
                             Spacer()
+                            Button(action: {
+                                if store.likedIds.contains(recipe.id) {
+                                    store.likedIds.remove(recipe.id)
+                                } else {
+                                    store.likedIds.insert(recipe.id)
+                                }
+                            }) {
+                                Image(systemName: store.likedIds.contains(recipe.id) ? "heart.fill" : "heart")
+                                    .foregroundColor(store.likedIds.contains(recipe.id) ? .red : .secondary)
+                            }
+                            .buttonStyle(.borderless)
                             Toggle("", isOn: Binding(
                                 get: { store.candidateIds.contains(recipe.id) },
                                 set: { isOn in
