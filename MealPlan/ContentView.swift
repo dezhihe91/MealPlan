@@ -1,19 +1,21 @@
 import SwiftUI
 
 struct ContentView: View {
+    @EnvironmentObject var store: MealPlanStore
+
     var body: some View {
         TabView {
             WeeklyPlanView()
                 .tabItem {
-                    Label("Plan", systemImage: "calendar")
+                    Label(store.language == .chinese ? "计划" : "Plan", systemImage: "calendar")
                 }
             GroceryListView()
                 .tabItem {
-                    Label("Groceries", systemImage: "cart")
+                    Label(store.language == .chinese ? "买菜" : "Groceries", systemImage: "cart")
                 }
             SettingsView()
                 .tabItem {
-                    Label("Settings", systemImage: "slider.horizontal.3")
+                    Label(store.language == .chinese ? "设置" : "Settings", systemImage: "slider.horizontal.3")
                 }
         }
     }
