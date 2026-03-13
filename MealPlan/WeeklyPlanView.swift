@@ -75,17 +75,19 @@ struct WeeklyPlanView: View {
                                         let summaryLabel = mealSummaryLabel(for: recipes)
                                         let countLabel = store.language == .chinese ? "\(recipes.count) 道" : "\(recipes.count) dishes"
                                         NavigationLink(destination: MealDetailView(mealType: mealType, recipes: recipes)) {
-                                            HStack {
-                                                VStack(alignment: .leading, spacing: 4) {
+                                            VStack(alignment: .leading, spacing: 4) {
+                                                HStack {
                                                     Text(mealType.title(for: store.language))
                                                         .font(.subheadline)
-                                                    Text(summaryLabel)
-                                                        .font(.footnote)
+                                                    Spacer()
+                                                    Text(countLabel)
+                                                        .font(.subheadline)
                                                         .foregroundColor(.secondary)
                                                 }
-                                                Spacer()
-                                                Text(countLabel)
+                                                Text(recipes.map { $0.displayName(for: store.language) }.joined(separator: "、"))
                                                     .font(.subheadline)
+                                                Text(summaryLabel)
+                                                    .font(.footnote)
                                                     .foregroundColor(.secondary)
                                             }
                                         }
