@@ -1,12 +1,28 @@
 import Foundation
 
+enum AppLanguage: String, CaseIterable, Identifiable {
+    case chinese
+    case english
+
+    var id: String { rawValue }
+}
+
 enum MealType: String, CaseIterable, Identifiable {
     case breakfast
     case lunch
     case dinner
 
     var id: String { rawValue }
-    var title: String { rawValue.capitalized }
+    func title(for language: AppLanguage) -> String {
+        switch (self, language) {
+        case (.breakfast, .chinese): return "早餐"
+        case (.lunch, .chinese): return "午餐"
+        case (.dinner, .chinese): return "晚餐"
+        case (.breakfast, .english): return "Breakfast"
+        case (.lunch, .english): return "Lunch"
+        case (.dinner, .english): return "Dinner"
+        }
+    }
 }
 
 enum IngredientCategory: String, CaseIterable, Identifiable {
@@ -19,16 +35,47 @@ enum IngredientCategory: String, CaseIterable, Identifiable {
     case other
 
     var id: String { rawValue }
-    var title: String {
-        switch self {
-        case .produce: return "Produce"
-        case .protein: return "Protein"
-        case .dairy: return "Dairy"
-        case .grains: return "Grains"
-        case .pantry: return "Pantry"
-        case .spices: return "Spices"
-        case .other: return "Other"
+    func title(for language: AppLanguage) -> String {
+        switch (self, language) {
+        case (.produce, .chinese): return "蔬果"
+        case (.protein, .chinese): return "蛋白"
+        case (.dairy, .chinese): return "乳制品"
+        case (.grains, .chinese): return "主食"
+        case (.pantry, .chinese): return "干货"
+        case (.spices, .chinese): return "调味"
+        case (.other, .chinese): return "其他"
+        case (.produce, .english): return "Produce"
+        case (.protein, .english): return "Protein"
+        case (.dairy, .english): return "Dairy"
+        case (.grains, .english): return "Grains"
+        case (.pantry, .english): return "Pantry"
+        case (.spices, .english): return "Spices"
+        case (.other, .english): return "Other"
         }
+    }
+
+    func displayName(for language: AppLanguage) -> String {
+        if language == .english {
+            return nameEn ?? name
+        }
+        return name
+    }
+
+    func displayInstructions(for language: AppLanguage) -> String {
+        if language == .english {
+            if let instructionsEn, instructionsEn != "See Chinese steps" {
+                return instructionsEn
+            }
+            return instructions
+        }
+        return instructions
+    }
+
+    func displayNutrition(for language: AppLanguage) -> String? {
+        if language == .english {
+            return nutritionEn ?? nutrition
+        }
+        return nutrition
     }
 }
 
@@ -43,29 +90,62 @@ struct Ingredient: Hashable, Identifiable {
 struct Recipe: Identifiable {
     let id = UUID()
     let name: String
+    let nameEn: String?
     let mealType: MealType
     let ingredients: [Ingredient]
     let instructions: String
+    let instructionsEn: String?
     let nutrition: String?
+    let nutritionEn: String?
     let prepMinutes: Int?
     let cookMinutes: Int?
 
     init(
         name: String,
+        nameEn: String? = nil,
         mealType: MealType,
         ingredients: [Ingredient],
         instructions: String,
+        instructionsEn: String? = nil,
         nutrition: String? = nil,
+        nutritionEn: String? = nil,
         prepMinutes: Int? = nil,
         cookMinutes: Int? = nil
     ) {
         self.name = name
+        self.nameEn = nameEn
         self.mealType = mealType
         self.ingredients = ingredients
         self.instructions = instructions
+        self.instructionsEn = instructionsEn
         self.nutrition = nutrition
+        self.nutritionEn = nutritionEn
         self.prepMinutes = prepMinutes
         self.cookMinutes = cookMinutes
+    }
+
+    func displayName(for language: AppLanguage) -> String {
+        if language == .english {
+            return nameEn ?? name
+        }
+        return name
+    }
+
+    func displayInstructions(for language: AppLanguage) -> String {
+        if language == .english {
+            if let instructionsEn, instructionsEn != "See Chinese steps" {
+                return instructionsEn
+            }
+            return instructions
+        }
+        return instructions
+    }
+
+    func displayNutrition(for language: AppLanguage) -> String? {
+        if language == .english {
+            return nutritionEn ?? nutrition
+        }
+        return nutrition
     }
 }
 
@@ -77,14 +157,43 @@ enum MealTemplate: String, CaseIterable, Identifiable {
     case mediterranean
 
     var id: String { rawValue }
-    var title: String {
-        switch self {
-        case .balanced: return "日常均衡"
-        case .pregnancy: return "孕期营养"
-        case .muscleGain: return "健身增肌"
-        case .fatLoss: return "减脂控卡"
-        case .mediterranean: return "地中海"
+    func title(for language: AppLanguage) -> String {
+        switch (self, language) {
+        case (.balanced, .chinese): return "日常均衡"
+        case (.pregnancy, .chinese): return "孕期营养"
+        case (.muscleGain, .chinese): return "健身增肌"
+        case (.fatLoss, .chinese): return "减脂控卡"
+        case (.mediterranean, .chinese): return "地中海"
+        case (.balanced, .english): return "Balanced"
+        case (.pregnancy, .english): return "Pregnancy"
+        case (.muscleGain, .english): return "Muscle Gain"
+        case (.fatLoss, .english): return "Fat Loss"
+        case (.mediterranean, .english): return "Mediterranean"
         }
+    }
+
+    func displayName(for language: AppLanguage) -> String {
+        if language == .english {
+            return nameEn ?? name
+        }
+        return name
+    }
+
+    func displayInstructions(for language: AppLanguage) -> String {
+        if language == .english {
+            if let instructionsEn, instructionsEn != "See Chinese steps" {
+                return instructionsEn
+            }
+            return instructions
+        }
+        return instructions
+    }
+
+    func displayNutrition(for language: AppLanguage) -> String? {
+        if language == .english {
+            return nutritionEn ?? nutrition
+        }
+        return nutrition
     }
 }
 
@@ -109,16 +218,47 @@ enum Weekday: Int, CaseIterable, Identifiable {
     case saturday
 
     var id: Int { rawValue }
-    var title: String {
-        switch self {
-        case .sunday: return "Sun"
-        case .monday: return "Mon"
-        case .tuesday: return "Tue"
-        case .wednesday: return "Wed"
-        case .thursday: return "Thu"
-        case .friday: return "Fri"
-        case .saturday: return "Sat"
+    func title(for language: AppLanguage) -> String {
+        switch (self, language) {
+        case (.sunday, .chinese): return "周日"
+        case (.monday, .chinese): return "周一"
+        case (.tuesday, .chinese): return "周二"
+        case (.wednesday, .chinese): return "周三"
+        case (.thursday, .chinese): return "周四"
+        case (.friday, .chinese): return "周五"
+        case (.saturday, .chinese): return "周六"
+        case (.sunday, .english): return "Sun"
+        case (.monday, .english): return "Mon"
+        case (.tuesday, .english): return "Tue"
+        case (.wednesday, .english): return "Wed"
+        case (.thursday, .english): return "Thu"
+        case (.friday, .english): return "Fri"
+        case (.saturday, .english): return "Sat"
         }
+    }
+
+    func displayName(for language: AppLanguage) -> String {
+        if language == .english {
+            return nameEn ?? name
+        }
+        return name
+    }
+
+    func displayInstructions(for language: AppLanguage) -> String {
+        if language == .english {
+            if let instructionsEn, instructionsEn != "See Chinese steps" {
+                return instructionsEn
+            }
+            return instructions
+        }
+        return instructions
+    }
+
+    func displayNutrition(for language: AppLanguage) -> String? {
+        if language == .english {
+            return nutritionEn ?? nutrition
+        }
+        return nutrition
     }
 }
 

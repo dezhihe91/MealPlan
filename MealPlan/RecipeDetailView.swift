@@ -1,12 +1,13 @@
 import SwiftUI
 
 struct RecipeDetailView: View {
+    @EnvironmentObject var store: MealPlanStore
     let recipe: Recipe
 
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
-                Text(recipe.name)
+                Text(recipe.displayName(for: store.language))
                     .font(.title2)
                     .bold()
 
@@ -14,24 +15,24 @@ struct RecipeDetailView: View {
                     let prep = recipe.prepMinutes ?? 0
                     let cook = recipe.cookMinutes ?? 0
                     let total = prep + cook
-                    Text("用时：准备 \(prep) 分钟 · 烹饪 \(cook) 分钟 · 合计 \(total) 分钟")
+                    Text(store.language == .chinese ? "用时：准备 \(prep) 分钟 · 烹饪 \(cook) 分钟 · 合计 \(total) 分钟" : "Time: Prep \(prep) min · Cook \(cook) min · Total \(total) min")
                         .font(.subheadline)
                         .foregroundColor(.secondary)
                 }
 
-                if let nutrition = recipe.nutrition {
+                if let nutrition = recipe.displayNutrition(for: store.language) {
                     Text(nutrition)
                         .font(.subheadline)
                         .foregroundColor(.secondary)
                 }
 
                 VStack(alignment: .leading, spacing: 8) {
-                    Text("食材准备")
+                    Text(store.language == .chinese ? "食材准备" : "Ingredients")
                         .font(.headline)
                     let grouped = Dictionary(grouping: recipe.ingredients, by: { $0.category })
                     ForEach(IngredientCategory.allCases) { category in
                         if let items = grouped[category] {
-                            Text(category.title)
+                            Text(category.title(for: store.language))
                                 .font(.subheadline)
                                 .foregroundColor(.secondary)
                             ForEach(items) { item in
@@ -43,9 +44,9 @@ struct RecipeDetailView: View {
                 }
 
                 VStack(alignment: .leading, spacing: 8) {
-                    Text("详细步骤")
+                    Text(store.language == .chinese ? "详细步骤" : "Instructions")
                         .font(.headline)
-                    let steps = stepsFromInstructions(recipe.instructions)
+                    let steps = stepsFromInstructions(recipe.displayInstructions(for: store.language))
                     ForEach(Array(steps.enumerated()), id: \.offset) { index, step in
                         Text("\(index + 1). \(step)")
                             .font(.body)
@@ -54,7 +55,7 @@ struct RecipeDetailView: View {
             }
             .padding()
         }
-        .navigationTitle("菜谱")
+        .navigationTitle(store.language == .chinese ? "菜谱" : "Recipe")
         .navigationBarTitleDisplayMode(.inline)
     }
 

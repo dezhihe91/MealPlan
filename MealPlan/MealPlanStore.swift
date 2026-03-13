@@ -2,6 +2,12 @@ import Foundation
 import SwiftUI
 
 final class MealPlanStore: ObservableObject {
+    @AppStorage("mealplan.language") private var languageRaw: String = AppLanguage.chinese.rawValue
+    var language: AppLanguage {
+        get { AppLanguage(rawValue: languageRaw) ?? .chinese }
+        set { languageRaw = newValue.rawValue }
+    }
+
     @Published var selectedTemplate: MealTemplate = .balanced
     @Published var groceryDays: Set<Weekday> = [.sunday]
     @Published var nutritionGoals = NutritionGoals()

@@ -6,20 +6,20 @@ struct WeeklyPlanView: View {
     var body: some View {
         NavigationStack {
             VStack(spacing: 16) {
-                Picker("模板", selection: $store.selectedTemplate) {
+                Picker(store.language == .chinese ? "模板" : "Template", selection: $store.selectedTemplate) {
                     ForEach(MealTemplate.allCases) { template in
-                        Text(template.title).tag(template)
+                        Text(template.title(for: store.language)).tag(template)
                     }
                 }
                 .pickerStyle(.menu)
 
                 HStack(spacing: 12) {
-                    Button("生成计划") {
+                    Button(store.language == .chinese ? "生成计划" : "Generate Plan") {
                         store.generatePlan()
                     }
                     .buttonStyle(.borderedProminent)
 
-                    Button("重复上周") {
+                    Button(store.language == .chinese ? "重复上周" : "Repeat Last Week") {
                         store.generatePlan(repeatLastWeek: true)
                     }
                     .buttonStyle(.bordered)
@@ -42,9 +42,9 @@ struct WeeklyPlanView: View {
                         Image(systemName: "calendar")
                             .font(.system(size: 36))
                             .foregroundColor(.secondary)
-                        Text("暂无计划")
+                        Text(store.language == .chinese ? "暂无计划" : "No plan yet")
                             .font(.headline)
-                        Text("点击生成计划开始使用")
+                        Text(store.language == .chinese ? "点击生成计划开始使用" : "Generate a weekly plan to get started.")
                             .font(.subheadline)
                             .foregroundColor(.secondary)
                     }
@@ -52,8 +52,19 @@ struct WeeklyPlanView: View {
                 }
             }
             .padding(.horizontal)
-            .navigationTitle("本周计划")
+            .navigationTitle(store.language == .chinese ? "本周计划" : "Weekly Plan")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: toggleLanguage) {
+                        Text(store.language == .chinese ? "EN" : "中文")
+                    }
+                }
+            }
         }
+    }
+
+    private func toggleLanguage() {
+        store.language = store.language == .chinese ? .english : .chinese
     }
 }
 
@@ -63,12 +74,12 @@ private struct MealSectionView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text(mealType.title)
+            Text(mealType.title(for: store.language))
                 .font(.headline)
             ForEach(recipes) { recipe in
                 NavigationLink(destination: RecipeDetailView(recipe: recipe)) {
                     VStack(alignment: .leading, spacing: 4) {
-                        Text(recipe.name)
+                        Text(recipe.displayName(for: store.language))
                             .font(.subheadline)
                     }
                 }
