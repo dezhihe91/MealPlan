@@ -94,6 +94,14 @@ final class MealPlanStore: ObservableObject {
         return available.first ?? .sunday
     }
 
+    private func candidatePool() -> [Recipe] {
+        if !candidateIds.isEmpty {
+            let pool = allRecipes.filter { candidateIds.contains($0.id) }
+            if !pool.isEmpty { return pool }
+        }
+        return SampleRecipes.recipes(for: selectedTemplate) + customRecipes
+    }
+
     private func pickRecipes(from recipes: [Recipe], seed: Int) -> [Recipe] {
         guard !recipes.isEmpty else { return [] }
         if recipes.count == 1 { return recipes }
