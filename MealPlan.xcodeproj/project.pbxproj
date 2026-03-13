@@ -15,6 +15,7 @@
 		93921559FDB9983DF783F2D2 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0894AB748C49BA3F61A83A12 /* Models.swift */; };
 		E1215A1FE840F9794AEF3C3D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CD664803F427B14C7933AC /* ContentView.swift */; };
 		E75DDC31849A32BB9D13458B /* SampleRecipes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E38DBC1371F46CC9C2714B3 /* SampleRecipes.swift */; };
+		F223754FBC21A31600585160 /* RecipeLibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6FF5691D22A7117B434FF63 /* RecipeLibraryView.swift */; };
 		F773774AB55022F7EDCBC2AB /* MealPlanApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C18FDACED8EC7DE1B965D6 /* MealPlanApp.swift */; };
 		FA3AA42137F0BC9C695C1C0D /* RecipeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C3B4B7BD01DD4A251F237B /* RecipeDetailView.swift */; };
 /* End PBXBuildFile section */
@@ -28,6 +29,7 @@
 		5EEC740D5F9AD70E62C84A9E /* WeeklyPlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyPlanView.swift; sourceTree = "<group>"; };
 		8E38DBC1371F46CC9C2714B3 /* SampleRecipes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleRecipes.swift; sourceTree = "<group>"; };
 		96C3B4B7BD01DD4A251F237B /* RecipeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailView.swift; sourceTree = "<group>"; };
+		A6FF5691D22A7117B434FF63 /* RecipeLibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeLibraryView.swift; sourceTree = "<group>"; };
 		BA541B90DAFB799EDA0E1EB9 /* MealPlanStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealPlanStore.swift; sourceTree = "<group>"; };
 		CFB8C5D1925BDE61FB8FA764 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		F2C18FDACED8EC7DE1B965D6 /* MealPlanApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealPlanApp.swift; sourceTree = "<group>"; };
@@ -51,6 +53,7 @@
 				BA541B90DAFB799EDA0E1EB9 /* MealPlanStore.swift */,
 				0894AB748C49BA3F61A83A12 /* Models.swift */,
 				96C3B4B7BD01DD4A251F237B /* RecipeDetailView.swift */,
+				A6FF5691D22A7117B434FF63 /* RecipeLibraryView.swift */,
 				8E38DBC1371F46CC9C2714B3 /* SampleRecipes.swift */,
 				CFB8C5D1925BDE61FB8FA764 /* SettingsView.swift */,
 				5EEC740D5F9AD70E62C84A9E /* WeeklyPlanView.swift */,
@@ -152,6 +155,7 @@
 				35C50C030DD1A340DB46CE08 /* MealPlanStore.swift in Sources */,
 				93921559FDB9983DF783F2D2 /* Models.swift in Sources */,
 				FA3AA42137F0BC9C695C1C0D /* RecipeDetailView.swift in Sources */,
+				F223754FBC21A31600585160 /* RecipeLibraryView.swift in Sources */,
 				E75DDC31849A32BB9D13458B /* SampleRecipes.swift in Sources */,
 				5ED3A5AC75386740AE4C4600 /* SettingsView.swift in Sources */,
 				78C21773EBB77BDBFC6B0040 /* WeeklyPlanView.swift in Sources */,
@@ -169,6 +173,8 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "需要麦克风用于语音录入菜谱";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "需要语音识别用于录入菜谱";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -193,6 +199,8 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "需要麦克风用于语音录入菜谱";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "需要语音识别用于录入菜谱";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
