@@ -137,6 +137,7 @@ enum MealTemplate: String, CaseIterable, Identifiable {
     case muscleGain
     case fatLoss
     case mediterranean
+    case chinese
 
     var id: String { rawValue }
     func title(for language: AppLanguage) -> String {

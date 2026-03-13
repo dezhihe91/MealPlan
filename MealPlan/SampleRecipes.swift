@@ -344,17 +344,17 @@ struct SampleRecipes {
             Ingredient(name: "紫菜", quantity: 5, unit: "g", category: .pantry),
             Ingredient(name: "鸡蛋", quantity: 1, unit: "pcs", category: .protein),
             Ingredient(name: "香葱", quantity: 5, unit: "g", category: .spices)
-        ], instructions: "水开下紫菜；鸡蛋打散淋入成蛋花，加盐和葱花。", instructionsEn: "See Chinese steps", nutrition: "清淡汤品", nutritionEn: "Light soup", prepMinutes: 5, cookMinutes: 5, isSoup: true, cuisine: "家常"),
+        ], instructions: "水开下紫菜；鸡蛋打散淋入成蛋花，加盐和葱花。", instructionsEn: "See Chinese steps", nutrition: "清淡汤品", nutritionEn: "Light soup", prepMinutes: 5, cookMinutes: 5, cuisine: "家常"),
         Recipe(name: "酸辣汤", nameEn: "Hot and Sour Soup", mealType: .lunch, ingredients: [
             Ingredient(name: "木耳", quantity: 10, unit: "g", category: .produce),
             Ingredient(name: "豆腐", quantity: 80, unit: "g", category: .protein),
             Ingredient(name: "醋", quantity: 10, unit: "ml", category: .spices)
-        ], instructions: "木耳泡发切丝；汤底加醋胡椒，放豆腐木耳煮3分钟，淋蛋花。", instructionsEn: "See Chinese steps", nutrition: "开胃", nutritionEn: "Appetizing", prepMinutes: 8, cookMinutes: 6, isSoup: true, cuisine: "家常"),
+        ], instructions: "木耳泡发切丝；汤底加醋胡椒，放豆腐木耳煮3分钟，淋蛋花。", instructionsEn: "See Chinese steps", nutrition: "开胃", nutritionEn: "Appetizing", prepMinutes: 8, cookMinutes: 6, cuisine: "家常"),
         Recipe(name: "冬瓜排骨汤", nameEn: "Winter Melon Rib Soup", mealType: .dinner, ingredients: [
             Ingredient(name: "排骨", quantity: 200, unit: "g", category: .protein),
             Ingredient(name: "冬瓜", quantity: 200, unit: "g", category: .produce),
             Ingredient(name: "姜", quantity: 5, unit: "g", category: .spices)
-        ], instructions: "排骨焯水后加姜片炖20分钟；加入冬瓜再煮10分钟调味。", instructionsEn: "See Chinese steps", nutrition: "清润", nutritionEn: "Light broth", prepMinutes: 10, cookMinutes: 30, isSoup: true, cuisine: "家常"),
+        ], instructions: "排骨焯水后加姜片炖20分钟；加入冬瓜再煮10分钟调味。", instructionsEn: "See Chinese steps", nutrition: "清润", nutritionEn: "Light broth", prepMinutes: 10, cookMinutes: 30, cuisine: "家常"),
         Recipe(name: "番茄炒蛋", nameEn: "Tomato Egg Stir-fry", mealType: .dinner, ingredients: [
             Ingredient(name: "鸡蛋", quantity: 2, unit: "pcs", category: .protein),
             Ingredient(name: "番茄", quantity: 150, unit: "g", category: .produce),
