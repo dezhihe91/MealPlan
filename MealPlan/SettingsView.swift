@@ -13,7 +13,7 @@ struct SettingsView: View {
                 }
             }
             .navigationTitle(store.language == .chinese ? "设置" : "Settings")
-            .onChange(of: store.reminderEnabled) { _, enabled in
+            .onChange(of: store.reminderEnabled) { enabled in
                 if enabled {
                     reminder.requestAuthorization { granted in
                         if granted {
@@ -24,12 +24,12 @@ struct SettingsView: View {
                     reminder.cancelGroceryReminders()
                 }
             }
-            .onChange(of: store.reminderTime) { _, _ in
+            .onChange(of: store.reminderTime) { _ in
                 if store.reminderEnabled {
                     reminder.scheduleGroceryReminders(weekdays: store.groceryDays, time: store.reminderTime)
                 }
             }
-            .onChange(of: store.groceryDays) { _, _ in
+            .onChange(of: store.groceryDays) { _ in
                 if store.reminderEnabled {
                     reminder.scheduleGroceryReminders(weekdays: store.groceryDays, time: store.reminderTime)
                 }
