@@ -40,12 +40,51 @@ final class MealPlanStore: ObservableObject {
 
         let start = Calendar.current.startOfDay(for: Date())
         let recipes = candidatePool()
+
+        var pools: [MealType: [Recipe]] = [:]
+        var soupPools: [MealType: [Recipe]] = [:]
+        var mainPools: [MealType: [Recipe]] = [:]
+        var indices: [MealType: Int] = [:]
+        var soupIndices: [MealType: Int] = [:]
+        var mainIndices: [MealType: Int] = [:]
+
+        for mealType in MealType.allCases {
+            let candidates = recipes.filter { $0.mealType == mealType }
+            pools[mealType] = candidates.shuffled()
+            soupPools[mealType] = candidates.filter { $0.isSoup }.shuffled()
+            mainPools[mealType] = candidates.filter { !$0.isSoup }.shuffled()
+            indices[mealType] = 0
+            soupIndices[mealType] = 0
+            mainIndices[mealType] = 0
+        }
+
         let dayPlans = (0..<7).compactMap { offset -> DayPlan? in
             guard let date = Calendar.current.date(byAdding: .day, value: offset, to: start) else { return nil }
             var meals: [MealType: [Recipe]] = [:]
             for mealType in MealType.allCases {
-                let candidates = recipes.filter { $0.mealType == mealType }
-                let mealRecipes = pickRecipes(from: candidates, seed: offset)
+                var pool = pools[mealType] ?? []
+                var poolIndex = indices[mealType] ?? 0
+                var soupPool = soupPools[mealType] ?? []
+                var soupIndex = soupIndices[mealType] ?? 0
+                var mainPool = mainPools[mealType] ?? []
+                var mainIndex = mainIndices[mealType] ?? 0
+
+                let mealRecipes = pickRecipesRandom(
+                    pool: &pool,
+                    poolIndex: &poolIndex,
+                    soupPool: &soupPool,
+                    soupIndex: &soupIndex,
+                    mainPool: &mainPool,
+                    mainIndex: &mainIndex
+                )
+
+                pools[mealType] = pool
+                indices[mealType] = poolIndex
+                soupPools[mealType] = soupPool
+                soupIndices[mealType] = soupIndex
+                mainPools[mealType] = mainPool
+                mainIndices[mealType] = mainIndex
+
                 meals[mealType] = mealRecipes
             }
             return DayPlan(date: date, meals: meals)
@@ -115,22 +154,39 @@ final class MealPlanStore: ObservableObject {
         return SampleRecipes.recipes(for: selectedTemplate) + customRecipes
     }
 
-    private func pickRecipes(from recipes: [Recipe], seed: Int) -> [Recipe] {
-        guard !recipes.isEmpty else { return [] }
-        if recipes.count == 1 { return recipes }
+    private func pickRecipesRandom(
+        pool: inout [Recipe],
+        poolIndex: inout Int,
+        soupPool: inout [Recipe],
+        soupIndex: inout Int,
+        mainPool: inout [Recipe],
+        mainIndex: inout Int
+    ) -> [Recipe] {
+        guard !pool.isEmpty else { return [] }
 
-        let soups = recipes.filter { $0.isSoup }
-        let mains = recipes.filter { !$0.isSoup }
-        if !soups.isEmpty && !mains.isEmpty {
-            let main = mains[seed % mains.count]
-            let soup = soups[seed % soups.count]
-            return [main, soup]
+        if !soupPool.isEmpty && !mainPool.isEmpty {
+            let main = nextRecipe(from: &mainPool, index: &mainIndex)
+            let soup = nextRecipe(from: &soupPool, index: &soupIndex)
+            return [main, soup].compactMap { $0 }
         }
 
-        let first = recipes[seed % recipes.count]
-        let second = recipes[(seed + 1) % recipes.count]
-        if first.id == second.id { return [first] }
-        return [first, second]
+        let first = nextRecipe(from: &pool, index: &poolIndex)
+        let second = nextRecipe(from: &pool, index: &poolIndex)
+        if let first, let second, first.id != second.id {
+            return [first, second]
+        }
+        return [first].compactMap { $0 }
+    }
+
+    private func nextRecipe(from pool: inout [Recipe], index: inout Int) -> Recipe? {
+        guard !pool.isEmpty else { return nil }
+        if index >= pool.count {
+            pool.shuffle()
+            index = 0
+        }
+        let item = pool[index]
+        index += 1
+        return item
     }
 
     private func aggregate(ingredients: [Ingredient]) -> [Ingredient] {
